@@ -1,0 +1,469 @@
+{% extends 'Base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+<!-- BEGIN: Head-->
+
+<head>
+    <title>Akademi Forum</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <!-- BEGIN: Vendor CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/vendors/css/vendors.min.css' %}">
+    <link rel="stylesheet" type="text/css"
+        href="{% static 'app-assets/vendors/css/tables/datatable/datatables.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/vendors/css/file-uploaders/dropzone.min.css' %}">
+    <link rel="stylesheet" type="text/css"
+        href="{% static 'app-assets/vendors/css/tables/datatable/extensions/dataTables.checkboxes.css' %}">
+    <!-- END: Vendor CSS-->
+
+
+    <!-- BEGIN: Page CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/css/core/menu/menu-types/vertical-menu.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/css/core/colors/palette-gradient.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/css/plugins/file-uploaders/dropzone.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/css/pages/data-list-view.css' %}">
+    <!-- END: Page CSS-->
+
+    <!-- BEGIN: Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/style.css' %}">
+    <!-- END: Custom CSS-->
+
+</head>
+<!-- END: Head-->
+
+<!-- BEGIN: Body-->
+
+<body class="vertical-layout vertical-menu-modern dark-layout 2-columns  navbar-floating footer-static  "
+    data-open="click" data-menu="vertical-menu-modern" data-col="2-columns" data-layout="dark-layout">
+    <!-- END: Main Menu-->
+
+    <!-- BEGIN: Content-->
+    <div class="app-content content">
+        <div class="content-overlay"></div>
+        <div class="header-navbar-shadow"></div>
+        <div class="content-wrapper">
+            <div class="content-header row">
+                <div class="content-header-left col-md-9 col-12 mb-2">
+                    <div class="row breadcrumbs-top">
+                        <div class="col-12">
+                            <h4 class="content-header-title float-left mb-0"> <span
+                                    style="font-family: 'Montserrat', sans-serif;">Akademi Dersleri</span></h2>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="content-body">
+                <!-- Data list view starts -->
+                <section id="data-list-view" class="data-list-view-header">
+
+                    <!-- DataTable starts -->
+
+                    <!-- DataTable ends -->
+
+                    <!-- add new sidebar starts -->
+                    <section id="backcolor">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card background-color">
+
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="card-header">
+                                                    <h4 class="card-title">Programlama Öğrenin</h4>
+                                                </div>
+
+                                                <div class="card-body mb-0" style="overflow-x: auto;">
+
+                                                    <div class="d-flex justify-content-center flex-wrap ">
+
+                                                        <a href="{% url 'tutorial_detail' 'C' %}">
+
+                                                            <div style="cursor:pointer;background:url('{% static 'app-assets\images\egitim\C.png'  %}');background-size: cover;"
+                                                                class="text-center bg-success colors-container rounded text-white width-200 height-200 d-flex align-items-center justify-content-center mr-1 ml-50  my-1 shadow">
+                                                                <span style="text-shadow:1px 1px 5px black"
+                                                                    class="align-middle"></span>
+                                                            </div>
+                                                            <div class="d-flex justify-content-center flex-wrap ">
+                                                                <h4>C Eğitimi</h4>
+                                                            </div>
+                                                        </a>
+
+                                                        <a href="{% url 'tutorial_detail' 'C++' %}">
+                                                            <div style="cursor:pointer;background:url('{% static 'app-assets\images\egitim\C++.png'  %}');background-size: cover;"
+                                                                class="text-center bg-success colors-container rounded text-white width-200 height-200 d-flex align-items-center justify-content-center mr-1 ml-50  my-1 shadow">
+                                                                <span style="text-shadow:1px 1px 5px black;"
+                                                                    class="align-middle"></span>
+                                                            </div>
+                                                            <div class="d-flex justify-content-center flex-wrap ">
+                                                                <h4>C++ Eğitimi</h4>
+                                                            </div>
+
+                                                        </a>
+                                                        <a href="{% url 'tutorial_detail' 'C#' %}">
+                                                            <div style="cursor:pointer;background:url('{% static 'app-assets\images\egitim\C#.png'  %}');background-size: cover;background-position: left 32% top 20%;"
+                                                                class="text-center bg-primary colors-container rounded text-white width-200 height-200 d-flex align-items-center justify-content-center mr-1 ml-50  my-1 shadow">
+                                                                <span style="text-shadow:1px 1px 5px black;"
+                                                                    class="align-middle"></span>
+                                                            </div>
+                                                            <div class="d-flex justify-content-center flex-wrap ">
+                                                                <h4>C# Eğitimi</h4>
+                                                            </div>
+                                                        </a>
+
+                                                        <a href="{% url 'tutorial_detail' 'Python' %}">
+                                                            <div class="cursor:pointer;text-center bg-primary colors-container rounded text-white width-200 height-200 d-flex align-items-center justify-content-center mr-1 ml-50 my-1 shadow"
+                                                                style="background:url('{% static 'app-assets\images\egitim\Python.png'  %}');background-size: cover;">
+                                                                <span style="text-shadow:1px 1px 5px black;"
+                                                                    class="align-middle"></span>
+                                                            </div>
+                                                            <div class="d-flex justify-content-center flex-wrap ">
+                                                                <h4>Python Eğitimi</h4>
+                                                            </div>
+                                                        </a>
+
+                                                        <a href="{% url 'tutorial_detail' 'Java' %}">
+                                                            <div style="cursor:pointer;background:url('{% static 'app-assets\images\egitim\Java.png'  %}');background-size: cover;"
+                                                                class="text-center bg-warning colors-container rounded text-white width-200 height-200 d-flex align-items-center justify-content-center mr-1 ml-50  my-1 shadow">
+                                                                <span style="text-shadow:1px 1px 5px black;"
+                                                                    class="align-middle"></span>
+
+                                                            </div>
+                                                            <div class="d-flex justify-content-center flex-wrap ">
+                                                                <h4>Java Eğitimi</h4>
+                                                            </div>
+                                                            <a href="{% url 'tutorial_detail' 'Ruby' %}">
+                                                                <div style="cursor:pointer;background:url('https://icons-for-free.com/iconfiles/png/512/end+long+shadow+programming+language+rails+ruby+web+web+technology-1320184847854241323.png');background-size: cover;"
+                                                                    class="text-center bg-warning colors-container rounded text-white width-200 height-200 d-flex align-items-center justify-content-center mr-1 ml-50  my-1 shadow">
+                                                                    <span style="text-shadow:1px 1px 5px black;"
+                                                                        class="align-middle"></span>
+
+                                                                </div>
+                                                                <div class="d-flex justify-content-center flex-wrap ">
+                                                                <h4>Ruby Eğitimi</h4>
+                                                            </div>
+                                                            </a>
+                                                            <a href="{% url 'tutorial_detail' 'GoLang' %}">
+                                                                <div style="cursor:pointer;background:url('{% static 'app-assets\images\egitim\GoLang.png'  %}');background-size: cover;"
+                                                                    class="text-center bg-warning colors-container rounded text-white width-200 height-200 d-flex align-items-center justify-content-center mr-1 ml-50  my-1 shadow">
+                                                                    <span style="text-shadow:1px 1px 5px black;"
+                                                                        class="align-middle"></span>
+
+                                                                </div>
+                                                                <div class="d-flex justify-content-center flex-wrap ">
+                                                                <h4>Go Lang Eğitimi</h4>
+                                                            </div>
+                                                            </a>
+                                                            <a href="{% url 'tutorial_detail' 'VisualBasic' %}">
+                                                                <div style="cursor:pointer;background:url('{% static 'app-assets\images\egitim\VisualBasic.png'  %}');background-size: cover;"
+                                                                    class="text-center bg-warning colors-container rounded text-white width-200 height-200 d-flex align-items-center justify-content-center mr-1 ml-50  my-1 shadow">
+                                                                    <span style="text-shadow:1px 1px 5px black;"
+                                                                        class="align-middle"></span>
+
+                                                                </div>
+                                                                <div class="d-flex justify-content-center flex-wrap ">
+                                                                <h4>Visual Basic Eğitimi</h4>
+                                                            </div>
+                                                            </a>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </section>
+                    <!-- Background color end -->
+
+                    <!-- Gradient color start -->
+                    <section id="backcolor-gradient">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card background-color">
+
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="card-header">
+                                                    <h4 class="card-title">Web Uygulamaları Geliştirin</h4>
+                                                </div>
+                                                <div class="card-body mb-0">
+
+
+                                                    <div class="d-flex justify-content-center flex-wrap ">
+                                                        <a href="{% url 'tutorial_detail' 'HTML' %}">
+                                                            <div style="cursor:pointer;background:url('{% static 'app-assets\images\egitim\HTML.png'  %}');background-size: cover;"
+                                                                class="text-center colors-container bg-gradient-primary rounded text-white width-200 height-200 d-flex align-items-center justify-content-center mr-1 ml-50 my-1 shadow">
+                                                                <span class="align-middle"></span>
+                                                            </div>
+                                                            <div class="d-flex justify-content-center flex-wrap ">
+                                                                <h4>HTML Eğitimi</h4>
+                                                            </div>
+                                                        </a>
+                                                        <a href="{% url 'tutorial_detail' 'CSS' %}">
+                                                            <div style="cursor:pointer;background:url('{% static 'app-assets\images\egitim\CSS.png'  %}');background-size: cover;"
+                                                                class="text-center colors-container bg-gradient-success rounded text-white width-200 height-200 d-flex align-items-center justify-content-center mr-1 ml-50  my-1 shadow">
+                                                                <span class="align-middle"></span>
+                                                            </div>
+                                                            <div class="d-flex justify-content-center flex-wrap ">
+                                                                <h4>CSS Eğitimi</h4>
+                                                            </div>
+                                                        </a>
+                                                        <a href="{% url 'tutorial_detail' 'PHP' %}">
+                                                            <div style="cursor:pointer;background:url('{% static 'app-assets\images\egitim\PHP.png'  %}');background-size: cover;"
+                                                                class="text-center colors-container bg-gradient-warning rounded text-white width-200 height-200 d-flex align-items-center justify-content-center mr-1 ml-50  my-1 shadow">
+                                                                <span class="align-middle"></span>
+                                                            </div>
+                                                            <div class="d-flex justify-content-center flex-wrap ">
+                                                                <h4>PHP Eğitimi</h4>
+                                                            </div>
+                                                        </a>
+                                                        <a href="{% url 'tutorial_detail' 'Django' %}">
+                                                            <div style="cursor:pointer;background:url('{% static 'app-assets\images\egitim\Django.png'  %}');background-size: cover;"
+                                                                class="text-center colors-container bg-gradient-info rounded text-white width-200 height-200 d-flex align-items-center justify-content-center my-1 ml-50 shadow px-1">
+                                                                <span class="align-middle"></span>
+                                                            </div>
+                                                            <div class="d-flex justify-content-center flex-wrap ">
+                                                                <h4>Django Eğitimi</h4>
+                                                            </div>
+                                                        </a>
+                                                        <a href="{% url 'tutorial_detail' 'Javascript' %}">
+                                                            <div style="cursor:pointer;background:url('{% static 'app-assets\images\egitim\Javascript.png'  %}');background-size: cover;"
+                                                                class="text-center colors-container bg-gradient-info rounded text-white width-200 height-200 d-flex align-items-center justify-content-center my-1 ml-50 shadow px-1">
+                                                                <span class="align-middle"></span>
+                                                            </div>
+                                                            <div class="d-flex justify-content-center flex-wrap ">
+                                                                <h4>Javascript Eğitimi</h4>
+                                                            </div>
+
+                                                        </a>
+
+                                                        <a href="{% url 'tutorial_detail' 'Nodejs' %}">
+                                                            <div style="cursor:pointer;background:url('{% static 'app-assets\images\egitim\Nodejs.png'  %}');background-size: cover;"
+                                                                class="text-center colors-container bg-gradient-info rounded text-white width-200 height-200 d-flex align-items-center justify-content-center my-1 ml-50 shadow px-1">
+                                                                <span class="align-middle"></span>
+                                                            </div>
+                                                            <div class="d-flex justify-content-center flex-wrap ">
+                                                                <h4>Nodejs Eğitimi</h4>
+                                                            </div>
+
+                                                        </a>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="backcolor-gradient">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+
+                                    <div class="container">
+
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="card-header">
+                                                    <h4 class="card-title">Mobil Uygulamalar Geliştirin</h4>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="d-flex justify-content-center flex-wrap">
+                                                        <a href="{% url 'tutorial_detail' 'Kotlin' %}">
+                                                            <div style="cursor:pointer;background:url('{% static 'app-assets\images\egitim\Kotlin.png'  %}');background-size: cover;"
+                                                                class="text-center colors-container bg-gradient-primary rounded text-white width-200 height-200 d-flex align-items-center justify-content-center mr-1 ml-50 my-1 shadow">
+                                                                <span class="align-middle"></span>
+                                                            </div>
+                                                            <div class="d-flex justify-content-center flex-wrap ">
+                                                                <h4>Kotlin Eğitimi</h4>
+                                                            </div>
+                                                        </a>
+                                                        <a href="{% url 'tutorial_detail' 'Swift' %}">
+                                                            <div style="cursor:pointer;background:url('{% static 'app-assets\images\egitim\Swift.png'  %}');background-size: cover;"
+                                                                class="text-center colors-container bg-gradient-success rounded text-white width-200 height-200 d-flex align-items-center justify-content-center mr-1 ml-50  my-1 shadow">
+                                                                <span class="align-middle"></span>
+                                                            </div>
+                                                            <div class="d-flex justify-content-center flex-wrap ">
+                                                                <h4>Swift Eğitimi</h4>
+                                                            </div>
+                                                        </a>
+
+                                                        <a href="{% url 'tutorial_detail' 'Flutter' %}">
+                                                            <div style="cursor:pointer;background:url('{% static 'app-assets\images\egitim\Flutter.png'  %}');background-size: cover;"
+                                                                class="text-center colors-container bg-gradient-danger rounded text-white width-200 height-200 d-flex align-items-center justify-content-center mr-1 ml-50  my-1 shadow">
+                                                                <span class="align-middle"></span>
+                                                            </div>
+                                                            <div class="d-flex justify-content-center flex-wrap ">
+                                                                <h4>Flutter Eğitimi</h4>
+                                                            </div>
+                                                        </a>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="backcolor-gradient">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+
+                                    <div class="container">
+
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="card-header">
+                                                    <h4 class="card-title">Popüler Framework ve Teknolojiler</h4>
+
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="d-flex justify-content-center flex-wrap">
+
+                                                        <a href="{% url 'tutorial_detail' 'Open CV' %}">
+                                                            <div style="cursor:pointer;  background:url('{% static 'app-assets\images\egitim\Open CV.png'  %}');background-size: cover;"
+                                                                class="text-center colors-container bg-gradient-primary rounded text-white width-200 height-200 d-flex align-items-center justify-content-center mr-1 ml-50 my-1 shadow">
+                                                                <span class="align-middle"></span>
+                                                            </div>
+                                                            <div class="d-flex justify-content-center flex-wrap ">
+                                                                <h4>Open CV Eğitimi</h4>
+                                                            </div>
+                                                        </a>
+
+                                                        <a href="{% url 'tutorial_detail' 'Selenium' %}">
+                                                            <div style="cursor:pointer;background:url('{% static 'app-assets\images\egitim\Selenium.png'  %}');background-size: cover;"
+                                                                class="text-center colors-container bg-gradient-success rounded text-white width-200 height-200 d-flex align-items-center justify-content-center mr-1 ml-50  my-1 shadow">
+                                                                <span class="align-middle"></span>
+                                                            </div>
+                                                            <div class="d-flex justify-content-center flex-wrap ">
+                                                                <h4>Selenium Eğitimi</h4>
+                                                            </div>
+                                                            <a href="{% url 'tutorial_detail' 'BeautifulSoup4' %}">
+                                                            <div style="cursor:pointer;background:url('{% static 'app-assets\images\egitim\Bs4.png'  %}');background-size: cover;"
+                                                                class="text-center colors-container bg-gradient-primary rounded text-white width-200 height-200 d-flex align-items-center justify-content-center mr-1 ml-50 my-1 shadow">
+                                                                <span class="align-middle"></span>
+                                                            </div>
+                                                            <div class="d-flex justify-content-center flex-wrap ">
+                                                                <h4>BeatifulSoup Eğitimi</h4>
+                                                            </div>
+                                                        </a>
+                                                        </a>
+                                                        <a href="{% url 'tutorial_detail' 'Kivy' %}">
+                                                            <div style="cursor:pointer;background:url('{% static 'app-assets\images\egitim\Kivy.png'  %}');background-size: cover;"
+                                                                class="text-center colors-container bg-gradient-danger rounded text-white width-200 height-200 d-flex align-items-center justify-content-center mr-1 ml-50  my-1 shadow">
+                                                                <span class="align-middle"></span>
+                                                            </div>
+                                                            <div class="d-flex justify-content-center flex-wrap ">
+                                                                <h4>Kivy Eğitimi</h4>
+                                                            </div>
+                                                        </a>
+
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="backcolor-gradient">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+
+                                    <div class="container">
+
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="card-header">
+                                                    <h4 class="card-title">Verileri Yönetmeyi Öğrenin</h4>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="d-flex justify-content-center flex-wrap">
+                                                        <a href="{% url 'tutorial_detail' 'Hadoop' %}">
+                                                            <div style="cursor:pointer;background:url('{% static 'app-assets\images\egitim\Hadoop.png'  %}');background-size: cover;"
+                                                                class="text-center colors-container bg-gradient-primary rounded text-white width-200 height-200 d-flex align-items-center justify-content-center mr-1 ml-50 my-1 shadow">
+                                                                <span class="align-middle"></span>
+                                                            </div>
+                                                            <div class="d-flex justify-content-center flex-wrap ">
+                                                                <h4>Hadoop Eğitimi</h4>
+                                                            </div>
+                                                        </a>
+                                                        <a href="{% url 'tutorial_detail' 'MongoDB' %}">
+                                                            <div style="cursor:pointer;background:url('{% static 'app-assets\images\egitim\MongoDB.png'  %}');background-size: cover;"
+                                                                class="text-center colors-container bg-gradient-success rounded text-white width-200 height-200 d-flex align-items-center justify-content-center mr-1 ml-50  my-1 shadow">
+                                                                <span class="align-middle"></span>
+                                                            </div>
+                                                            <div class="d-flex justify-content-center flex-wrap ">
+                                                                <h4>MongoDB Eğitimi</h4>
+                                                            </div>
+                                                        </a>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- Gradient color end -->
+
+            </div>
+            <!-- add new sidebar ends -->
+            </section>
+            <!-- Data list view end -->
+
+        </div>
+    </div>
+    </div>
+    <!-- END: Content-->
+    {% endblock content %}
+    <div class="sidenav-overlay"></div>
+    <div class="drag-target"></div>
+
+    <!-- BEGIN: Vendor JS-->
+    <script src="{% static 'app-assets/vendors/js/vendors.min.js' %}"></script>
+    <!-- BEGIN Vendor JS-->
+
+    <!-- BEGIN: Page Vendor JS-->
+    <script src="{% static 'app-assets/vendors/js/extensions/dropzone.min.js' %}"></script>
+    <script src="{% static 'app-assets/vendors/js/tables/datatable/datatables.min.js' %}"></script>
+    <script src="{% static 'app-assets/vendors/js/tables/datatable/datatables.buttons.min.js' %}"></script>
+    <script src="{% static 'app-assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'app-assets/vendors/js/tables/datatable/buttons.bootstrap.min.js' %}"></script>
+    <script src="{% static 'app-assets/vendors/js/tables/datatable/dataTables.select.min.js' %}"></script>
+    <script src="{% static 'app-assets/vendors/js/tables/datatable/datatables.checkboxes.min.js' %}"></script>
+    <!-- END: Page Vendor JS-->
+
+    <!-- BEGIN: Theme JS-->
+    <script src="{% static 'app-assets/js/core/app-menu.js' %}"></script>
+    <script src="{% static 'app-assets/js/core/app.js' %}"></script>
+    <script src="{% static 'app-assets/js/scripts/components.js' %}"></script>
+    <!-- END: Theme JS-->
+
+    <!-- BEGIN: Page JS-->
+    <script src="{% static 'app-assets/js/scripts/ui/data-list-view.js' %}"></script>
+    <!-- END: Page JS-->
+
+</body>
+<!-- END: Body-->
+
+
+</html>
+
+</html>

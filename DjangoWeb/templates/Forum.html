@@ -1,0 +1,163 @@
+{% extends 'Base.html' %} {% load static %} {% load template_filters %} {% block content %}
+
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+<!-- BEGIN: Head-->
+
+<head>
+    <title>Akademi Forum</title>
+
+    <!-- BEGIN: Vendor CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/vendors/css/vendors.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/vendors/css/tables/datatable/datatables.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/vendors/css/file-uploaders/dropzone.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/vendors/css/tables/datatable/extensions/dataTables.checkboxes.css' %}">
+    <!-- END: Vendor CSS-->
+
+    <!-- BEGIN: Page CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/css/core/menu/menu-types/vertical-menu.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/css/core/colors/palette-gradient.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/css/plugins/file-uploaders/dropzone.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/css/pages/data-list-view.css' %}">
+    <!-- END: Page CSS-->
+
+    <!-- BEGIN: Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/style.css' %}">
+    <!-- END: Custom CSS-->
+
+
+    <style>
+        table tr {
+            border: 2px solid;
+            color: transparent;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+<!-- END: Head-->
+
+<!-- BEGIN: Body-->
+
+<body class="vertical-layout vertical-menu-modern dark-layout 2-columns  navbar-floating footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="2-columns" data-layout="dark-layout">
+    <!-- END: Main Menu-->
+    <div class="app-content content">
+        <div class="content-wrapper">
+        </div>
+        <h4>Forum Sayesinde Sorunlarınızı / Önerilerinizi / Fikirlerinizi Paylaşın!</h4>
+        <br />
+        <!-- BEGIN: Content-->
+        <div class="content-body">
+            <!-- Data list view starts -->
+            <section id="data-thumb-view" class="data-thumb-view-header">
+
+                <!-- dataTable starts -->
+                <div class="table-responsive">
+                    <table class="table data-thumb-view">
+                        <thead>
+                            <tr>
+                                <th>Konu Sahibi</th>
+                                <th>Konu Sahibi İsmi</th>
+                                <th>Konu Başlığı</th>
+                                <th>Popülarite</th>
+                                <th>Kategori</th>
+                                <th></th>
+                                <th>Tarih</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in forum_topic %}
+                            <tr onclick="yonlendir('{% url 'forumContent' item.id %}')">
+                                <td class="product-img ">
+                                    <a><img width="56 " height="56 " style="border-radius: 50%; " src="{{forum_avatar | lookup:forloop.counter0}} " alt="Img placeholder "></a>
+                                </td>
+                                <td class="product-name ">{{item.to_dict.userFullname}}</td>
+                                <td class="product-category ">{{item.to_dict.name}}</td>
+                                <td>
+                                    <div class="progress progress-bar-success ">
+                                        <div class="progress-bar " role="progressbar " aria-valuenow="40 " aria-valuemin="40 " aria-valuemax="100 " style="width:{{item.to_dict.upvotes | length}}% "></div>
+                                    </div>
+                                </td>
+                                <td>
+                                    {% if item.to_dict.type == 'Genel' %}
+                                    <div class="chip chip-success">
+                                        <div class="chip-body ">
+                                            <div class="chip-text ">{{item.to_dict.type}}</div>
+                                        </div>
+                                    </div>
+                                    {% elif item.to_dict.type == 'Sık Sorulanlar' %}
+                                    <div class="chip chip-warning">
+                                        <div class="chip-body">
+                                            <div class="chip-text ">{{item.to_dict.type}}</div>
+                                        </div>
+                                    </div>
+                                    {% elif item.to_dict.type == 'Bilgi' %}
+                                    <div class="chip chip-info ">
+                                        <div class="chip-body ">
+                                            <div class="chip-text ">{{item.to_dict.type}}</div>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+
+                                </td>
+                                <td></td>
+                                <td class="product-action ">{{item.to_dict.date}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+
+
+                <!-- add new sidebar ends -->
+            </section>
+            <!-- Data list view end -->
+
+        </div>
+    </div>
+    </div>
+    <!-- END: Content-->
+
+
+    <div class="sidenav-overlay "></div>
+    <div class="drag-target "></div>
+    <script>
+        function yonlendir(url) {
+            document.location.href = url;
+        }
+    </script>
+
+    <!-- BEGIN: Vendor JS-->
+    <script src="{% static 'app-assets/vendors/js/vendors.min.js' %}"></script>
+    <!-- BEGIN Vendor JS-->
+
+    <!-- BEGIN: Page Vendor JS-->
+    <script src="{% static 'app-assets/vendors/js/extensions/dropzone.min.js' %}"></script>
+    <script src="{% static 'app-assets/vendors/js/tables/datatable/datatables.min.js' %}"></script>
+    <script src="{% static 'app-assets/vendors/js/tables/datatable/datatables.buttons.min.js' %}"></script>
+    <script src="{% static 'app-assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'app-assets/vendors/js/tables/datatable/buttons.bootstrap.min.js' %}"></script>
+    <script src="{% static 'app-assets/vendors/js/tables/datatable/dataTables.select.min.js' %}"></script>
+    <script src="{% static 'app-assets/vendors/js/tables/datatable/datatables.checkboxes.min.js' %}"></script>
+    <!-- END: Page Vendor JS-->
+
+    <!-- BEGIN: Theme JS-->
+    <script src="{% static 'app-assets/js/core/app-menu.js' %}"></script>
+    <script src="{% static 'app-assets/js/core/app.js' %}"></script>
+    <script src="{% static 'app-assets/js/scripts/components.js' %}"></script>
+    <!-- END: Theme JS-->
+
+    <!-- BEGIN: Page JS-->
+    <script src="{% static 'app-assets/js/scripts/ui/data-list-view.js' %}"></script>
+    <!-- END: Page JS-->
+
+
+</body>
+{% endblock content %}
+
+
+<!-- END: Body-->
+
+
+</html>

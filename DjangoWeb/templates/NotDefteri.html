@@ -1,0 +1,172 @@
+{% extends 'Base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+<!-- BEGIN: Head-->
+
+<head>
+    <title>Akademi</title>
+
+    <!-- BEGIN: Vendor CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/vendors/css/vendors.min.css' %}">
+    <link rel="stylesheet" type="text/css"
+        href="{% static 'app-assets/vendors/css/tables/datatable/datatables.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/vendors/css/file-uploaders/dropzone.min.css' %}">
+    <link rel="stylesheet" type="text/css"
+        href="{% static 'app-assets/vendors/css/tables/datatable/extensions/dataTables.checkboxes.css' %}">
+    <!-- END: Vendor CSS-->
+
+    <!-- BEGIN: Page CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/css/core/menu/menu-types/vertical-menu.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/css/core/colors/palette-gradient.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/css/plugins/file-uploaders/dropzone.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/css/pages/data-list-view.css' %}">
+    <!-- END: Page CSS-->
+
+    <!-- BEGIN: Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/style.css' %}">
+    <!-- END: Custom CSS-->
+
+</head>
+
+<body class="vertical-layout vertical-menu-modern dark-layout 2-columns  navbar-floating footer-static  "
+    data-open="click" data-menu="vertical-menu-modern" data-col="2-columns" data-layout="dark-layout">
+    <!-- END: Main Menu-->
+
+    <!-- BEGIN: Content-->
+
+    <div class="app-content content">
+        <div class="content-overlay"></div>
+        <div class="header-navbar-shadow"></div>
+        <div class="content-wrapper">
+            <div class="content-header row">
+                <div class="content-header-left col-md-9 col-12 mb-2">
+                    <div class="row breadcrumbs-top">
+                        <div class="col-12">
+                            <h3 class="content-header-title float-left mb-0">Akademi</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row ">
+
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Not Ekle</h4>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-body">
+                                <div class="row">
+                                    
+                                   
+                                    <div class="col-12 w-100 ">
+                                        <fieldset class="form-group">
+                                            <label for="squareText">Not Başlığı</label>
+                                            <input type="text" id="squareText" class="form-control square" maxlength="100" minlength="10" placeholder="" autofocus>
+                                        </fieldset>
+                                    </div>
+                                    <br>
+                                    <div class="col-12">
+                                        <label for="textarea-counter">Not İçeriği</label>
+                                        <fieldset class="form-label-group mb-0">
+                                            <textarea data-length="1000" class="form-control char-textarea active" id="textarea-counter" rows="3" placeholder="" style="color: rgb(78, 81, 84);"></textarea>
+                                        </fieldset>
+                                        <small class="counter-value float-right" style="background-color: rgb(115, 103, 240);"><span class="char-count">0</span> / 1000 </small>
+                                    
+                                    </div>
+                                    <div class="col-12">
+                                        <br>
+                                        <button type="button" class="btn bg-gradient-success mr-1 mb-1 waves-effect waves-light float-right">Ekle</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                
+                <div class="col-xl-12">
+                    <h2>Notların</h2><br>
+                    <div class="card w-100" style="border-bottom: 2px  #dc3545 solid ;border-right:6px solid #ffc107 ;">
+                        <div class="card-header">
+                            <h4 class="card-title">Not Başlığı</h4>
+                             <li class="d-inline-block mr-5">
+                                        <fieldset>
+                                            <div class="vs-checkbox-con vs-checkbox-primary">
+                                                <span class="">Tekrarla</span> 
+                                                <input type="checkbox" checked="">
+                                                <span class="vs-checkbox">
+                                                    <span class="vs-checkbox--check">
+                                                        <i class="vs-icon feather icon-check"></i>
+                                                    </span>
+                                                </span>
+                                               
+                                            </div>
+                                        </fieldset>
+                                    </li>
+                            <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-5"></i></a>
+                            <div class="heading-elements">
+                               
+                                <ul class="list-inline mb-0">
+                                   
+                                    <li><a data-action="collapse"><i class="feather text-warning icon-chevron-down"></i></a></li>                                    
+                                    <li><a data-action="close"><i class="feather text-danger icon-x"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-content collapse show">
+                            <div class="card-body">
+                                <p>
+                                   Not İçeriği
+                                </p>
+                            </div>
+                            <small class=" float-right  mr-1" style="background-color: rgb(115, 103, 240);"><span class="char-count">21.07.2020</small>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+               
+
+
+                {% endblock content %}
+                <!-- END: Content-->
+
+                <div class="sidenav-overlay"></div>
+                <div class="drag-target"></div>
+
+                <!-- BEGIN: Vendor JS-->
+                <script src="{% static 'app-assets/vendors/js/vendors.min.js' %}"></script>
+                <!-- BEGIN Vendor JS-->
+
+                <!-- BEGIN: Page Vendor JS-->
+                <script src="{% static 'app-assets/vendors/js/extensions/dropzone.min.js' %}"></script>
+                <script src="{% static 'app-assets/vendors/js/tables/datatable/datatables.min.js' %}"></script>
+                <script src="{% static 'app-assets/vendors/js/tables/datatable/datatables.buttons.min.js' %}"></script>
+                <script
+                    src="{% static 'app-assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js' %}"></script>
+                <script src="{% static 'app-assets/vendors/js/tables/datatable/buttons.bootstrap.min.js' %}"></script>
+                <script src="{% static 'app-assets/vendors/js/tables/datatable/dataTables.select.min.js' %}"></script>
+                <script
+                    src="{% static 'app-assets/vendors/js/tables/datatable/datatables.checkboxes.min.js' %}"></script>
+                <!-- END: Page Vendor JS-->
+
+                <!-- BEGIN: Theme JS-->
+                <script src="{% static 'app-assets/js/core/app-menu.js' %}"></script>
+                <script src="{% static 'app-assets/js/core/app.js' %}"></script>
+                <script src="{% static 'app-assets/js/scripts/components.js' %}"></script>
+                <!-- END: Theme JS-->
+
+                <!-- BEGIN: Page JS-->
+                <script src="{% static 'app-assets/js/scripts/ui/data-list-view.js' %}"></script>
+                <!-- END: Page JS-->
+
+</body>
+<!-- END: Body-->
+
+
+</html>

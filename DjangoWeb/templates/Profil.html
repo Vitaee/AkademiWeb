@@ -1,0 +1,206 @@
+{% extends 'Base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+<!-- BEGIN: Head-->
+
+<head>
+    <title>Akademi Forum</title>
+
+    <!-- BEGIN: Vendor CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/vendors/css/vendors.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/vendors/css/tables/datatable/datatables.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/vendors/css/file-uploaders/dropzone.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/vendors/css/tables/datatable/extensions/dataTables.checkboxes.css' %}">
+    <!-- END: Vendor CSS-->
+
+
+    <!-- BEGIN: Page CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/css/core/menu/menu-types/vertical-menu.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/css/core/colors/palette-gradient.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/css/plugins/file-uploaders/dropzone.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/css/pages/data-list-view.css' %}">
+    <!-- END: Page CSS-->
+
+    <!-- BEGIN: Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/style.css' %}">
+    <!-- END: Custom CSS-->
+
+</head>
+<!-- END: Head-->
+
+<!-- BEGIN: Body-->
+
+<body class="vertical-layout vertical-menu-modern dark-layout 2-columns  navbar-floating footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="2-columns" data-layout="dark-layout">
+    <!-- END: Main Menu-->
+
+    <!-- BEGIN: Content-->
+    <div class="app-content content">
+        <div class="content-overlay"></div>
+        <div class="header-navbar-shadow"></div>
+        <div class="content-wrapper">
+            <div class="content-header row">
+                <div class="content-header-left col-md-12 col-12 mb-2">
+                    <div class="row breadcrumbs-top">
+                        <div class="col-12">
+<!-- Kart 1-->
+                    
+<div class="content-wrapper">
+           
+            <div class="content-body">
+                <!-- Basic example and Profile cards section start -->
+             
+                    <div class="row match-height">
+                
+                   
+                        <!-- Profile Cards Starts -->
+                        <div class="col-xl-4 col-md-6 col-sm-12 profile-card-1">
+                            <div class="card" style="height: 329.683px;">
+                                <div class="card-header mx-auto">
+                                    <div class="avatar avatar-xl">
+                                        <img class="img-fluid" src="{{avatar}}" alt="img placeholder ">
+                                    </div>
+                                </div>
+                                <div class="card-content">
+                                    <div class="card-body text-center">
+                                        <h4>{{ user_data.userFullname }}</h4>
+                                        <p class="">{{ user_data.userJob }}</p>
+                                        <div class="card-btns d-flex justify-content-between">
+                                            <button class="btn gradient-light-primary waves-effect waves-light">Takip Et</button>
+                                            <button class="btn btn-outline-primary waves-effect waves-light">Mesaj </button>
+                                        </div>
+                                        <hr class="my-2">
+                                        <div class="d-flex justify-content-between">
+                                            <div class="float-left">
+                                                <i class="feather icon-star text-warning mr-50"></i> {{ user_data.userAccountType }}
+                                            </div>
+                                            <div class="float-right">
+                                                <i class="feather icon-bar-chart text-primary mr-50"></i> {{ user_data.userLevel}} Seviye
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-md-6 col-sm-12 profile-card-2">
+                            <div class="card" style="height: 329.683px;">
+                                <div class="card-header mx-auto pb-0">
+                                    <div class="row m-0">
+                                        <div class="col-sm-12 text-center">
+                                            <h4>Akademi </h4>
+                                        </div>
+                                        <div class="col-sm-12 text-center">
+                                            <p class="">{{user_data.userBio}}</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-content">
+                                    <div class="card-body text-center mx-auto">
+
+                                        <div class="d-flex justify-content-between mt-2">
+                                            <div class="uploads">
+                                                <p class="font-weight-bold font-medium-2 mb-0">{{ user_stat.visitors | length}}</p>
+                                                <span class="">Ziyaretçiler</span>
+                                        </div>
+                                            <div class="followers">
+                                                <p class="font-weight-bold font-medium-2 mb-0">{{ user_data.userFollowers | length}}</p>
+                                                <span class="">Takipciler</span>
+                                            </div>
+                                            <div class="following">
+                                                <p class="font-weight-bold font-medium-2 mb-0">{{ user_data.userFollowing | length}}</p>
+                                                <span class="">Takip Edilenler</span>
+                                            </div>
+                                        </div>
+                                        <button class="btn gradient-light-primary btn-block mt-2 waves-effect waves-light">Takip Et</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-md-6 col-sm-12 profile-card-3">
+                            <div class="card" style="height: 329.683px;">
+                                <div class="card-header mx-auto">
+
+                                </div>
+                                <div class="card-content">
+                                    <div class="card-body text-center">
+                                        <h4>{{user_data.userNickname}}</h4>
+                                        <p class="">Puan Bilgisi</p>
+                                        <div class="d-flex justify-content-between">
+                                            <small class="float-left font-weight-bold"  id="example-caption-3">{{user_data.userPoint}}</small>
+
+                                            <small class="float-right font-weight-bold" id="example-caption-4">1000</small>
+                                        </div>
+
+                                        <div id="ic">
+                                        <div class="progress progress-bar-primary box-shadow-6">
+                                            <div id="prog" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="1000"  aria-describedby="example-caption-3"></div>
+                                 </div>
+                                  <script>
+                                  var a =document.getElementById("ic");
+                                  var p=a.offsetWidth;
+                                  document.getElementById("prog").style.width=( {{user_data.userPoint}} /  (1000/p)) + "px";
+                                  </script>
+                                        <div class="card-btns d-flex justify-content-between">
+                                            <button class="btn gradient-light-primary waves-effect waves-light">Takip Et</button>
+                                            <button class="btn btn-outline-primary waves-effect waves-light">Mesaj gonder</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Profile Cards Ends -->
+                    </div>
+                <!-- // Basic example and Profile cards section end -->               
+            </div>
+        </div>
+
+                 
+
+                            
+                            
+                        </div>
+                        </div>
+                        
+                    </div>
+                </div>
+               
+            </div>
+       
+        </div>
+    </div>
+    <!-- END: Content-->
+{% endblock content %}
+
+    <div class="sidenav-overlay"></div>
+    <div class="drag-target"></div>
+
+    <!-- BEGIN: Vendor JS-->
+    <script src="{% static 'app-assets/vendors/js/vendors.min.js' %}"></script>
+    <!-- BEGIN Vendor JS-->
+
+    <!-- BEGIN: Page Vendor JS-->
+    <script src="{% static 'app-assets/vendors/js/extensions/dropzone.min.js' %}"></script>
+    <script src="{% static 'app-assets/vendors/js/tables/datatable/datatables.min.js' %}"></script>
+    <script src="{% static 'app-assets/vendors/js/tables/datatable/datatables.buttons.min.js' %}"></script>
+    <script src="{% static 'app-assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'app-assets/vendors/js/tables/datatable/buttons.bootstrap.min.js' %}"></script>
+    <script src="{% static 'app-assets/vendors/js/tables/datatable/dataTables.select.min.js' %}"></script>
+    <script src="{% static 'app-assets/vendors/js/tables/datatable/datatables.checkboxes.min.js' %}"></script>
+    <!-- END: Page Vendor JS-->
+
+    <!-- BEGIN: Theme JS-->
+    <script src="{% static 'app-assets/js/core/app-menu.js' %}"></script>
+    <script src="{% static 'app-assets/js/core/app.js' %}"></script>
+    <script src="{% static 'app-assets/js/scripts/components.js' %}"></script>
+    <!-- END: Theme JS-->
+
+    <!-- BEGIN: Page JS-->
+    <script src="{% static 'app-assets/js/scripts/ui/data-list-view.js' %}"></script>
+    <!-- END: Page JS-->
+    
+</body>
+<!-- END: Body-->
+
+</html>

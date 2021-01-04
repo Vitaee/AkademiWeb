@@ -1,0 +1,139 @@
+{% extends 'Base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+<!-- BEGIN: Head-->
+
+<head>
+    <title>Akademi</title>
+
+    <!-- BEGIN: Vendor CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/vendors/css/vendors.min.css' %}">
+    <link rel="stylesheet" type="text/css"
+        href="{% static 'app-assets/vendors/css/tables/datatable/datatables.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/vendors/css/file-uploaders/dropzone.min.css' %}">
+    <link rel="stylesheet" type="text/css"
+        href="{% static 'app-assets/vendors/css/tables/datatable/extensions/dataTables.checkboxes.css' %}">
+    <!-- END: Vendor CSS-->
+
+    <!-- BEGIN: Page CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/css/core/menu/menu-types/vertical-menu.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/css/core/colors/palette-gradient.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/css/plugins/file-uploaders/dropzone.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/css/pages/data-list-view.css' %}">
+    <!-- END: Page CSS-->
+
+    <!-- BEGIN: Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/style.css' %}">
+    <!-- END: Custom CSS-->
+
+</head>
+
+<body class="vertical-layout vertical-menu-modern dark-layout 2-columns  navbar-floating footer-static  "
+    data-open="click" data-menu="vertical-menu-modern" data-col="2-columns" data-layout="dark-layout">
+    <!-- END: Main Menu-->
+
+    <!-- BEGIN: Content-->
+
+    <div class="app-content content">
+        <div class="content-overlay"></div>
+        <div class="header-navbar-shadow"></div>
+        <div class="content-wrapper">
+            <div class="content-header row">
+                <div class="content-header-left col-md-9 col-12 mb-2">
+                    <div class="row breadcrumbs-top">
+                        <div class="col-12">
+                            <h3 class="content-header-title float-left mb-0">Akademi</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row ">
+
+
+                {% for item in newsData %}
+
+                <!--Card Başladı-->
+
+                <div class="col-md-4" style="margin-top:25px">
+                    <!-- Data list view starts -->
+                    <section id="data-list-view" class="data-list-view-header">
+
+                        <div class="card" style="height: 525.783px;">
+                            <div class="card-header mb-1">
+                                <h4 class="card-title">{{ item.id }}</h4>
+                            </div>
+                            <div class="card-content">
+                                <img class="img-fluid" src="{{ item.to_dict.image }}" alt="Card image cap">
+                                <div class="card-body">
+                                    <p class="card-text">{{ item.to_dict.description }}</p>
+                                </div>
+                            </div>
+                            <div class="card-footer text-muted">
+                                <span class="float-left">{{ item.to_dict.date }}</span>
+                                <span class="float-right">
+                                    <a target="_blank" href="{{ item.to_dict.url }}" class="card-link">Devamı <i
+                                            class="fa fa-angle-right"></i></a>
+                                </span>
+
+                                {% if item.to_dict.date.day == todayDay and item.to_dict.date.month == todayMonth and item.to_dict.date.year == todayYear %}
+                                {% if messages %}
+                                <p class="messages" style="position: absolute;">
+                                    {% for message in messages %}
+                                    <p{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</p>
+                                {% endfor %}
+
+                                {% endif %}
+                                {% else %}
+                                <!-- NULL -->
+                                {% endif %}
+
+
+                            </div>
+                        </div>
+
+                    </section>
+                </div>
+                {%  endfor %}
+
+
+
+
+                {% endblock content %}
+                <!-- END: Content-->
+
+                <div class="sidenav-overlay"></div>
+                <div class="drag-target"></div>
+
+                <!-- BEGIN: Vendor JS-->
+                <script src="{% static 'app-assets/vendors/js/vendors.min.js' %}"></script>
+                <!-- BEGIN Vendor JS-->
+
+                <!-- BEGIN: Page Vendor JS-->
+                <script src="{% static 'app-assets/vendors/js/extensions/dropzone.min.js' %}"></script>
+                <script src="{% static 'app-assets/vendors/js/tables/datatable/datatables.min.js' %}"></script>
+                <script src="{% static 'app-assets/vendors/js/tables/datatable/datatables.buttons.min.js' %}"></script>
+                <script
+                    src="{% static 'app-assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js' %}"></script>
+                <script src="{% static 'app-assets/vendors/js/tables/datatable/buttons.bootstrap.min.js' %}"></script>
+                <script src="{% static 'app-assets/vendors/js/tables/datatable/dataTables.select.min.js' %}"></script>
+                <script
+                    src="{% static 'app-assets/vendors/js/tables/datatable/datatables.checkboxes.min.js' %}"></script>
+                <!-- END: Page Vendor JS-->
+
+                <!-- BEGIN: Theme JS-->
+                <script src="{% static 'app-assets/js/core/app-menu.js' %}"></script>
+                <script src="{% static 'app-assets/js/core/app.js' %}"></script>
+                <script src="{% static 'app-assets/js/scripts/components.js' %}"></script>
+                <!-- END: Theme JS-->
+
+                <!-- BEGIN: Page JS-->
+                <script src="{% static 'app-assets/js/scripts/ui/data-list-view.js' %}"></script>
+                <!-- END: Page JS-->
+
+</body>
+<!-- END: Body-->
+
+
+</html>

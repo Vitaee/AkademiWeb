@@ -1,0 +1,133 @@
+{% extends 'Base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+<!-- BEGIN: Head-->
+
+<head>
+    <title>Akademi</title>
+
+    <!-- BEGIN: Vendor CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/vendors/css/vendors.min.css' %}">
+    <link rel="stylesheet" type="text/css"
+        href="{% static 'app-assets/vendors/css/tables/datatable/datatables.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/vendors/css/file-uploaders/dropzone.min.css' %}">
+    <link rel="stylesheet" type="text/css"
+        href="{% static 'app-assets/vendors/css/tables/datatable/extensions/dataTables.checkboxes.css' %}">
+    <!-- END: Vendor CSS-->
+
+    <!-- BEGIN: Page CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/css/core/menu/menu-types/vertical-menu.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/css/core/colors/palette-gradient.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/css/plugins/file-uploaders/dropzone.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/css/pages/data-list-view.css' %}">
+    <!-- END: Page CSS-->
+
+    <!-- BEGIN: Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/style.css' %}">
+    <!-- END: Custom CSS-->
+
+</head>
+
+
+<body class="vertical-layout vertical-menu-modern dark-layout 2-columns  navbar-floating footer-static  "
+    data-open="click" data-menu="vertical-menu-modern" data-col="2-columns" data-layout="dark-layout">
+    <!-- END: Main Menu-->
+    <div class="app-content content">
+
+
+        <div class="content-overlay"></div>
+        <div class="header-navbar-shadow"></div>
+
+        <div class="content-wrapper">
+            <div class="content-header row">
+            <div class="content-header-left col-md-10 col-12 mb-2">
+                    <div class="row breadcrumbs-top">
+                        <div class="col-12">
+                            <h3 class="content-header-title float-left mb-0">Akademi Kupon Hediyeleri</h3>
+
+                        </div>
+
+                           <div class="col-md-12">
+                           <br>
+                            <p class="content-header-title float-left mb-0">Çeşitli internet sitelerindeki yüzlerce liralık programlama eğitimlerine buradaki kuponları kullanarak ücretsiz sahip olabilirsiniz. Eğer almaya çalıştığınız eğitim ücretli gözüküyor ise kupon tükenmiş olabilir. Lütfen  daha sonra tekrar deneyin. </p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content-body">
+                <section id="basic-examples">
+                    <div class="row match-height">
+
+                        {% for coupon in coupon_data %}
+
+                        <div class="col-xl-4 col-md-6 col-sm-12">
+                            <div class="card" style="height: 563.396px;">
+                                <div class="card-content">
+                                    <img class="card-img-top img-fluid"
+                                        src="{{coupon.to_dict.Avatar}}"
+                                        alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5>{{coupon.to_dict.Name}}</h5>
+                                        <p class="card-text  mb-0">{{coupon.to_dict.Date}}</p>
+
+                                        <div class="card-btns mt-2" >
+                                            
+                                            <a href="{{coupon.to_dict.Link}}"
+                                                class="btn gradient-light-primary text-white waves-effect waves-light w-100">Hediyeyi Al
+                                                </a>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+
+                        <!-- Profile Cards Ends -->
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
+
+    {% endblock content %}
+    <div class="sidenav-overlay"></div>
+    <div class="drag-target"></div>
+
+    <!-- BEGIN: Vendor JS-->
+    <script src="{% static 'app-assets/vendors/js/vendors.min.js' %}"></script>
+    <!-- BEGIN Vendor JS-->
+
+    <!-- BEGIN: Page Vendor JS-->
+    <script src="{% static 'app-assets/vendors/js/extensions/dropzone.min.js' %}"></script>
+    <script src="{% static 'app-assets/vendors/js/tables/datatable/datatables.min.js' %}"></script>
+    <script src="{% static 'app-assets/vendors/js/tables/datatable/datatables.buttons.min.js' %}"></script>
+    <script src="{% static 'app-assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'app-assets/vendors/js/tables/datatable/buttons.bootstrap.min.js' %}"></script>
+    <script src="{% static 'app-assets/vendors/js/tables/datatable/dataTables.select.min.js' %}"></script>
+    <script src="{% static 'app-assets/vendors/js/tables/datatable/datatables.checkboxes.min.js' %}"></script>
+    <!-- END: Page Vendor JS-->
+
+    <!-- BEGIN: Theme JS-->
+    <script src="{% static 'app-assets/js/core/app-menu.js' %}"></script>
+    <script src="{% static 'app-assets/js/core/app.js' %}"></script>
+    <script src="{% static 'app-assets/js/scripts/components.js' %}"></script>
+    <!-- END: Theme JS-->
+
+    <!-- BEGIN: Page JS-->
+    <script src="{% static 'app-assets/js/scripts/ui/data-list-view.js' %}"></script>
+    <!-- END: Page JS-->
+
+</body>
+<!-- END: Body-->
+
+
+</html>

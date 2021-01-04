@@ -1,0 +1,262 @@
+{% extends 'Base.html' %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+
+<!-- BEGIN: Head-->
+<head>
+    <!-- BEGIN: Vendor CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/vendors/css/vendors.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/vendors/css/forms/select/select2.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/vendors/css/pickers/pickadate/pickadate.css' %}">
+    <!-- END: Vendor CSS-->
+
+    <!-- BEGIN: Page CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/css/core/menu/menu-types/vertical-menu.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/css/core/colors/palette-gradient.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/css/plugins/forms/validation/form-validation.css' %}">
+    <!-- END: Page CSS-->
+
+    <!-- BEGIN: Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/style.css' %}">
+    <!-- END: Custom CSS-->
+
+</head>
+<!-- END: Head-->
+
+<!-- BEGIN: Content-->
+    <div class="app-content content">
+        <div class="content-overlay"></div>
+        <div class="header-navbar-shadow"></div>
+        <div class="content-wrapper">
+            <div class="content-header row">
+                <div class="content-header-left col-md-9 col-12 mb-2">
+                    <div class="row breadcrumbs-top">
+                        <div class="col-12">
+                            <h2 class="content-header-title float-left mb-0">Hesap Ayarları</h2>
+                            <div class="breadcrumb-wrapper col-12">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="">Anasayfa</a>
+                                    </li>
+                                    <li class="breadcrumb-item active"> Hesap Ayarları
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content-body">
+                <!-- account setting page start -->
+                <section id="page-account-settings">
+                    <div class="row">
+                        <!-- left menu section -->
+                        <div class="col-md-3 mb-2 mb-md-0">
+                            <ul class="nav nav-pills flex-column mt-md-0 mt-1">
+                                <li class="nav-item">
+                                    <a class="nav-link d-flex py-75 active" id="account-pill-general" data-toggle="pill" href="#account-vertical-general" aria-expanded="true">
+                                        <i class="feather icon-globe mr-50 font-medium-3"></i>
+                                        Genel
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link d-flex py-75" id="account-pill-password" data-toggle="pill" href="#account-vertical-password" aria-expanded="false">
+                                        <i class="feather icon-lock mr-50 font-medium-3"></i>
+                                        Şifre değiştir
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link d-flex py-75" id="account-pill-notifications" data-toggle="pill" href="#account-vertical-notifications" aria-expanded="false">
+                                        <i class="feather icon-message-circle mr-50 font-medium-3"></i>
+                                        Bildirimler
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- right content section -->
+                        <div class="col-md-9">
+                            <div class="card">
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <div class="tab-content">
+                                            <div role="tabpanel" class="tab-pane active" id="account-vertical-general" aria-labelledby="account-pill-general" aria-expanded="true">
+                                                <div class="media">
+                                                    <a href="javascript: void(0);">
+                                                        <img src="{{request.session.avatar}}" class="rounded mr-75" alt="profile image" height="64" width="64">
+                                                    </a>
+                                                    <div class="media-body mt-75">
+                                                        <div class="col-12 px-0 d-flex flex-sm-row flex-column justify-content-start">
+                                                            <label class="btn btn-sm btn-primary ml-50 mb-50 mb-sm-0 cursor-pointer" for="account-upload">Yeni fotoğraf yükle</label>
+                                                            <input type="file" id="account-upload" hidden>
+                                                            <button class="btn btn-sm btn-outline-warning ml-50">Sıfırla</button>
+                                                        </div>
+                                                        <p class="text-muted ml-75 mt-50"><small>İzin verilen JPG, GIF veya PNG. Maksimum boyut 800 KB</small></p>
+                                                    </div>
+                                                </div>
+                                                <hr>
+                                                <form novalidate>
+                                                <div class="row">
+                                                        <div class="col-12">
+                                                            <div class="form-group">
+                                                                <label for="accountTextarea">Biyografiniz:</label>
+                                                                <textarea class="form-control" id="accountTextarea" rows="3" placeholder="Biyografiniz">{{userData.to_dict.userBio}}</textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <div class="form-group">
+                                                                <div class="controls">
+                                                                    <label for="account-username">Kullanıcı adı</label>
+                                                                    <input type="text" class="form-control" id="account-username" placeholder="Kullanıcı adınızı girin"  value="{{userData.to_dict.userUsername}}" required data-validation-required-message="Kullanıcı adı alanı zorunludur">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <div class="form-group">
+                                                                <div class="controls">
+                                                                    <label for="account-name">İsim</label>
+                                                                    <input type="text" class="form-control" id="account-name" placeholder="İsminizi girin" readonly value="{{userData.to_dict.userFullname}}" required data-validation-required-message="İsim alanı zorunludur">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <div class="form-group">
+                                                                <div class="controls">
+                                                                    <label for="account-e-mail">E-posta</label>
+                                                                    <input type="email" class="form-control" id="account-e-mail" placeholder="E-posta adresinizi girin" value="{{userData.to_dict.userEmail}}" required data-validation-required-message="E-posta alanı zorunludur">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <div class="alert alert-warning alert-dismissible mb-2" role="alert">
+                                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                                    <span aria-hidden="true">×</span>
+                                                                </button>
+                                                                <p class="mb-0">
+                                                                    E-postanız onaylanmadı. Lütfen gelen kutunuzu kontrol edin.
+                                                                </p>
+                                                                <a href="javascript: void(0);">Doğrulamayı tekrar gönder</a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
+                                                            <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Kaydet</button>
+                                                            <button type="reset" class="btn btn-outline-warning">Vazgeç</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="tab-pane fade " id="account-vertical-password" role="tabpanel" aria-labelledby="account-pill-password" aria-expanded="false">
+                                                <form novalidate action="{% url 'sifreSifirlama' %}" method="POST">
+                                                    {% csrf_token %}
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <div class="form-group">
+                                                                <div class="controls">
+                                                                    <label for="account-old-password">Eski şifre</label>
+                                                                    <input type="password" class="form-control" name = "oldPass" id="account-old-password" required placeholder="Eski şifrenizi girin" data-validation-required-message="Eski şifre alanı zorunludur">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <div class="form-group">
+                                                                <div class="controls">
+                                                                    <label for="account-new-password">Yeni şifre</label>
+                                                                    <input type="password" name="newPassword" id="account-new-password" name = "newPass" class="form-control" placeholder="Yeni şifrenizi girin" required data-validation-required-message="Şifre alanı zorunludur" minlength="8">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <div class="form-group">
+                                                                <div class="controls">
+                                                                    <label for="account-retype-new-password">Yeni şifre</label>
+                                                                    <input type="password" name="con-password" class="form-control" required id="account-retype-new-password" data-validation-match-match="password" placeholder="Yeni şifrenizi tekrar girin" data-validation-required-message="'Parolayı Onayla' alanı zorunludur" minlength="8">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
+                                                            <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Kaydet
+                                                                </button>
+                                                            <button type="reset" class="btn btn-outline-warning">Vazgeç</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="tab-pane fade" id="account-vertical-notifications" role="tabpanel" aria-labelledby="account-pill-notifications" aria-expanded="false">
+                                                <div class="row">
+                                                    <h6 class="m-1">Aktivite</h6>
+                                                    
+                                                    <div class="col-12 mb-1">
+                                                        <div class="custom-control custom-switch custom-control-inline">
+                                                            <input type="checkbox" class="custom-control-input" checked id="accountSwitch2">
+                                                            <label class="custom-control-label mr-1" for="accountSwitch2"></label>
+                                                            <span class="switch-label w-100">Birisi formuma cevap verdiğinde bana bildirim gönder</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 mb-1">
+                                                        <div class="custom-control custom-switch custom-control-inline">
+                                                            <input type="checkbox" class="custom-control-input" id="accountSwitch3">
+                                                            <label class="custom-control-label mr-1" for="accountSwitch3"></label>
+                                                            <span class="switch-label w-100">Birisi beni takip ettiğinde bana bildirim gönder</span>
+                                                        </div>
+                                                    </div>
+                                                    <h6 class="m-1">Uygulama</h6>
+                                                    <div class="col-12 mb-1">
+                                                        <div class="custom-control custom-switch custom-control-inline">
+                                                            <input type="checkbox" class="custom-control-input" checked id="accountSwitch4">
+                                                            <label class="custom-control-label mr-1" for="accountSwitch4"></label>
+                                                            <span class="switch-label w-100">Haber ve Duyurular</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 mb-1">
+                                                        <div class="custom-control custom-switch custom-control-inline">
+                                                            <input type="checkbox" class="custom-control-input" id="accountSwitch5">
+                                                            <label class="custom-control-label mr-1" for="accountSwitch5"></label>
+                                                            <span class="switch-label w-100">Haftalık haber güncellemeleri</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
+                                                        <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Kaydet
+                                                            </button>
+                                                        <button type="reset" class="btn btn-outline-warning">Vazgeç</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- account setting page end -->
+
+            </div>
+        </div>
+    </div>
+    <!-- END: Content-->
+{% endblock content %}
+    <div class="sidenav-overlay"></div>
+    <div class="drag-target"></div>
+
+    <!-- BEGIN: Vendor JS-->
+    <script src="{% static 'app-assets/vendors/js/vendors.min.js' %}"></script>
+    <!-- BEGIN Vendor JS-->
+
+    <!-- BEGIN: Page Vendor JS-->
+    <script src="{% static 'app-assets/vendors/js/forms/select/select2.full.min.js' %}"></script>
+    <script src="{% static 'app-assets/vendors/js/forms/validation/jqBootstrapValidation.js' %}"></script>
+    <script src="{% static 'app-assets/vendors/js/pickers/pickadate/picker.js' %}"></script>
+    <script src="{% static 'app-assets/vendors/js/pickers/pickadate/picker.date.js' %}"></script>
+    <script src="{% static 'app-assets/vendors/js/extensions/dropzone.min.js' %}"></script>
+    <!-- END: Page Vendor JS-->
+
+    <!-- BEGIN: Page JS-->
+    <script src="{% static 'app-assets/js/scripts/pages/account-setting.js' %}"></script>
+    <!-- END: Page JS-->
+
+</body>
+<!-- END: Body-->
+
+
+</html>

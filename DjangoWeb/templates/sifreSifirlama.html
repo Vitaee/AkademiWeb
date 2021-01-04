@@ -1,0 +1,115 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+<!-- BEGIN: Head-->
+
+<head>
+    <!-- BEGIN: Vendor CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static '/app-assets/vendors/css/vendors.min.css' %}">
+    <!-- END: Vendor CSS-->
+
+    <!-- BEGIN: Theme CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static '/app-assets/css/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/app-assets/css/bootstrap-extended.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/app-assets/css/colors.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/app-assets/css/components.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/app-assets/css/themes/dark-layout.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/app-assets/css/themes/semi-dark-layout.css' %}">
+    <!-- END: Theme CSS-->
+
+    <!-- BEGIN: Page CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static '/app-assets/css/core/menu/menu-types/vertical-menu.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/app-assets/css/core/colors/palette-gradient.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/app-assets/css/pages/authentication.css' %}">
+    <!-- END: Page CSS-->
+
+    <!-- BEGIN: Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static '/assets/css/style.css' %}">
+    <!-- END: Custom CSS-->
+
+</head>
+
+<body class="vertical-layout vertical-menu-modern dark-layout 1-column  navbar-floating footer-static bg-full-screen-image  blank-page blank-page" data-open="click" data-menu="vertical-menu-modern" data-col="1-column" data-layout="dark-layout">
+    <!-- BEGIN: Content-->
+    <div class="app-content content">
+        <div class="content-overlay"></div>
+        <div class="header-navbar-shadow"></div>
+        <div class="content-wrapper">
+            <div class="content-header row">
+            </div>
+            <div class="content-body">
+                <section class="row flexbox-container">
+                    <div class="col-xl-7 col-md-9 col-10 d-flex justify-content-center px-0">
+                        <div class="card bg-authentication rounded-0 mb-0">
+                            <div class="row m-0">
+                                <div class="col-lg-6 d-lg-block d-none text-center align-self-center">
+                                    <img src="{% static '/app-assets/images/pages/forgot-password.png' %}" alt="branding logo">
+                                </div>
+                                <div class="col-lg-6 col-12 p-0">
+                                    <div class="card rounded-0 mb-0 px-2 py-1">
+                                        <div class="card-header pb-1">
+                                            <div class="card-title">
+                                                <h4 class="mb-0">Şifrenizi sıfırlayın</h4>
+                                            </div>
+                                        </div>
+                                        <p class="px-2 mb-0">Lütfen e-posta adresinizi girin, size şifrenizi nasıl sıfırlayacağınızla ilgili talimatlar gönderelim.</p>
+                                        <div class="card-content">
+                                            <div class="card-body">
+                                                <form action="index.html">
+                                                    <div class="form-label-group">
+                                                        <input type="email" id="inputEmail" class="form-control" placeholder="Email">
+                                                        <label for="inputEmail">E-posta adresiniz</label>
+                                                    </div>
+                                                </form>
+                                                <div class="float-md-left d-block mb-1">
+                                                    <a href="{% url "girisSayfasi" %}" class="btn btn-outline-primary btn-block px-75">Giriş Sayfasına Geri Dön</a>
+                                                </div>
+                                                <div class="float-md-right d-block mb-1">
+                                                    <a href="#" class="btn btn-primary btn-block px-75">Şifreyi sıfırla</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    </div>
+    <!-- END: Content-->
+
+    <!-- BEGIN: Vendor JS-->
+    <script src="{% static '/app-assets/vendors/js/vendors.min.js' %}"></script>
+    <!-- BEGIN Vendor JS-->
+    
+{% if onay %}
+    <script>
+    if ("{{onay}}" == "TRUE")
+    {
+         <button type="button" class="btn btn-outline-success mr-1 mb-1 waves-effect waves-light" id="type-success">Lütfen e-posta adresinizi kontrol edin</button>
+    }
+    {% else %}
+        <button type="button" class="btn btn-outline-danger mr-1 mb-1 waves-effect waves-light" id="type-error">E-posta adresi bulunamadı</button>
+    </script>
+    {% endif %}
+
+
+
+
+
+{% if athlete_list and coach_list %}
+    Both athletes and coaches are available.
+{% endif %}
+
+{% if not athlete_list %}
+    There are no athletes.
+{% endif %}
+
+</body>
+<!-- END: Body-->
+
+</html>

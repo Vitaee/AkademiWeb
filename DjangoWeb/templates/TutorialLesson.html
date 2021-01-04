@@ -1,0 +1,146 @@
+{% extends 'Base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+<!-- BEGIN: Head-->
+
+<head>
+    <title>Akademi</title>
+
+    <!-- BEGIN: Vendor CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/vendors/css/vendors.min.css' %}">
+    <link rel="stylesheet" type="text/css"
+        href="{% static 'app-assets/vendors/css/tables/datatable/datatables.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/vendors/css/file-uploaders/dropzone.min.css' %}">
+    <link rel="stylesheet" type="text/css"
+        href="{% static 'app-assets/vendors/css/tables/datatable/extensions/dataTables.checkboxes.css' %}">
+    <!-- END: Vendor CSS-->
+
+    <!-- BEGIN: Page CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/css/core/menu/menu-types/vertical-menu.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/css/core/colors/palette-gradient.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/css/plugins/file-uploaders/dropzone.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/css/pages/data-list-view.css' %}">
+    <!-- END: Page CSS-->
+
+    <!-- BEGIN: Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/style.css' %}">
+    <!-- END: Custom CSS-->
+
+</head>
+
+<body class="vertical-layout vertical-menu-modern dark-layout 2-columns  navbar-floating footer-static"
+    data-open="click" data-menu="vertical-menu-modern" data-col="2-columns" data-layout="dark-layout">
+    <!-- END: Main Menu-->
+
+    <!-- BEGIN: Content-->
+
+    <div class="app-content content">
+        <div class="content-overlay"></div>
+        <div class="header-navbar-shadow"></div>
+        <div class="content-wrapper">
+            <div class="content-header row">
+                <div class="content-header-left col-md-9 col-12">
+                    <div class="row breadcrumbs-top">
+                        <blockquote class=" card blockquote pl-1 border-left-primary border-left-3 col-12">
+                            <div class="media" id="description">
+                                <div class="media-left pr-1 mt-2">
+                                    <img class="media-object img-xl" src="{{author_avatar}}" style="width: 72px; height: 72px; border-radius: 50%;" alt="Generic placeholder image">
+                                </div>
+                                <div class="media-body mt-2">
+                                    {{about_tutorial.to_dict.about}}
+                                </div>
+                            </div>
+                            <footer class="blockquote-footer text-right">
+                                <cite title="Source Title">{{about_tutorial.to_dict.Author}}</cite>
+                            </footer>
+                        </blockquote>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="row match-height">
+                <table style="border-width: 0px;" class="table data-list-view dataTable no-footer dt-checkboxes-select" id="DataTables_Table_0" role="grid">
+                    <thead>
+                        <tr role="row"><th class="dt-checkboxes-cell dt-checkboxes-select-all sorting_disabled" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 0px;" data-col="0" aria-label=""></th><th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 125.817px;" aria-sort="ascending" aria-label="NAME: activate to sort column descending">Ünite İsmi</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 96.5167px;" aria-label="CATEGORY: activate to sort column ascending">Okunma Sayısı</th>&emsp;<th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width:96.5167px; margin-right: 20px;" aria-label="CATEGORY: activate to sort column ascending">Zorluk Düzeyi</th>&emsp;<th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="margin-left: 10px; width: 100px;" aria-label="POPULARITY: activate to sort column ascending">&emsp;Ders Durumu</th></tr>
+                    </thead>
+                    <tbody>
+                {% for units in tutorial_lessons  %}
+                    <tr role="row" class="odd">
+                            <td class="product-name sorting_1"><img src="{% static 'app-assets/images/egitim/ders_logo.jpg' %}" width="48" height="48" style="border-radius: 50%;"></td>
+                            <td class="product-category w-25">{{units.to_dict.name}}</td>
+                            <td class="product-category w-25 ml-3">&emsp;<i class="fa fa-eye"></i>&emsp;{{units.to_dict.userVisits | length}}</td>
+                            <td>
+                                <div class="progress progress-bar-success" style="background-color: grey;">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="40" aria-valuemax="100" style="width:{{zorluk | lookup:forloop.counter0}}%;" ></div>
+                                </div>
+                            </td>
+                            <td>
+                                {% if request.session.id in units.to_dict.userVisits %}
+                                    <div class="chip chip-primary ml-1">
+                                        <div class="chip-body">
+                                            <div class="chip-text">Tamamlandı</div>
+                                        </div>
+                                        </div>
+                                        {% else %}
+                                            <div class="chip chip-danger ml-1">
+                                                <div class="chip-body">
+                                            <div class="chip-text">Tamamlanmadı</div>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                            </td>
+                           
+                            <td class="product-price" style="text-align: right;">
+                                <a href="{% url 'lesson_detail' units.to_dict.name %}" target="_blank"><button type="button" class="btn btn-flat-success mr-1 mb-1 mt-1 waves-effect waves-light" >Dersi Görüntüle</button></a>
+                            </td>
+                        </tr>
+                        {% endfor %}</tbody>
+                </table>
+                
+            
+            
+                </div>
+
+
+                {% endblock content %}
+                <!-- END: Content-->
+
+                <div class="sidenav-overlay"></div>
+                <div class="drag-target"></div>
+
+                <!-- BEGIN: Vendor JS-->
+                <script src="{% static 'app-assets/vendors/js/vendors.min.js' %}"></script>
+                <!-- BEGIN Vendor JS-->
+
+                <!-- BEGIN: Page Vendor JS-->
+                <script src="{% static 'app-assets/vendors/js/extensions/dropzone.min.js' %}"></script>
+                <script src="{% static 'app-assets/vendors/js/tables/datatable/datatables.min.js' %}"></script>
+                <script src="{% static 'app-assets/vendors/js/tables/datatable/datatables.buttons.min.js' %}"></script>
+                <script
+                    src="{% static 'app-assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js' %}"></script>
+                <script src="{% static 'app-assets/vendors/js/tables/datatable/buttons.bootstrap.min.js' %}"></script>
+                <script src="{% static 'app-assets/vendors/js/tables/datatable/dataTables.select.min.js' %}"></script>
+                <script
+                    src="{% static 'app-assets/vendors/js/tables/datatable/datatables.checkboxes.min.js' %}"></script>
+                <!-- END: Page Vendor JS-->
+
+                <!-- BEGIN: Theme JS-->
+                <script src="{% static 'app-assets/js/core/app-menu.js' %}"></script>
+                <script src="{% static 'app-assets/js/core/app.js' %}"></script>
+                <script src="{% static 'app-assets/js/scripts/components.js' %}"></script>
+                <!-- END: Theme JS-->
+
+                <!-- BEGIN: Page JS-->
+                <script src="{% static 'app-assets/js/scripts/ui/data-list-view.js' %}"></script>
+                <!-- END: Page JS-->
+
+</body>
+<!-- END: Body-->
+
+
+</html>
+
+

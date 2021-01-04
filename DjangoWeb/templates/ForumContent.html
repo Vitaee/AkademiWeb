@@ -1,0 +1,174 @@
+{% extends 'Base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr" xmlns="http://www.w3.org/1999/html">
+<!-- BEGIN: Head-->
+
+<head>
+    <title>Akademi</title>
+
+    <!-- BEGIN: Vendor CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/vendors/css/vendors.min.css' %}">
+    <link rel="stylesheet" type="text/css"
+        href="{% static 'app-assets/vendors/css/tables/datatable/datatables.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/vendors/css/file-uploaders/dropzone.min.css' %}">
+    <link rel="stylesheet" type="text/css"
+        href="{% static 'app-assets/vendors/css/tables/datatable/extensions/dataTables.checkboxes.css' %}">
+    <!-- END: Vendor CSS-->
+
+    <!-- BEGIN: Page CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/css/core/menu/menu-types/vertical-menu.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/css/core/colors/palette-gradient.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/css/plugins/file-uploaders/dropzone.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/css/pages/data-list-view.css' %}">
+    <!-- END: Page CSS-->
+
+    <!-- BEGIN: Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/style.css' %}">
+    <!-- END: Custom CSS-->
+
+</head>
+
+<body class="vertical-layout vertical-menu-modern dark-layout 2-columns  navbar-floating footer-static  "
+    data-open="click" data-menu="vertical-menu-modern" data-col="2-columns" data-layout="dark-layout">
+    <!-- END: Main Menu-->
+
+    <!-- BEGIN: Content-->
+
+
+    <div class="app-content content">
+        <div class="content-overlay"></div>
+        <div class="header-navbar-shadow"></div>
+        <div class="content-wrapper">
+            <div class="content-header row">
+                <div class="content-header-left col-md-12 col-12 mb-2">
+                    <div class="row breadcrumbs-top">
+                        <div class="col-12">
+                            <h3 class="content-header-title  mb-0  " style="width:100%;text-align:center;">
+                                {{forum.to_dict.name}}</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content-body">
+                <div class="row">
+
+                    <div class="col-md-12">
+
+                        <div class="container">
+                            <div class="container card">
+                                <div id="icerik" style="color:rgb(170,170,170);" class="container pt-1 pb-1 mb-1">
+                                    <div class="container">
+                                        <br>
+                                        <div class="media">
+
+                                            <img class="align-self-start mr-3" src="{{topic_avatar}}"
+                                                style="box-shadow: inset 0 0 6px rgb(200,200,200,0.3);border:1px solid rgb(112,103,263);height:70px;width:70px;border-radius:50%;"
+                                                id="yazarimg" alt="Generic placeholder image" width="70">
+                                            <div class="media-body"><br>
+                                                <div style="margin-left:-10px;">
+                                                    <h5 style="margin-top:-10px;margin-left:-10px;" id="yazarisim"></h5>
+                                                    <a href="{% url 'other_profiles' user_data.to_dict.userUID %}" target="_blank">{{user_data.to_dict.userFullname}}</a>
+                                                    <p id="yazarbio">{{user_data.to_dict.userBio}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <p>{{forum_data.to_dict.detail | safe}}</p>
+                                    </div>
+                                </div>
+
+                                <div>
+
+                                </div>
+                                <h3>Yorum Yapın</h3>
+                                <div class="row">
+                                    <div class="col-md-9">
+                                        <form method="POST" id="form">
+                                            {% csrf_token %}
+                                        <input style="border:1px solid rgb(112,103,236);"
+                                               type="text" name="yorum" class="form-control"
+                                               placeholder="Bir yorum bırak">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <button type="submit"
+                                                class="btn btn-outline-info w-100">Gönder</button>
+                                        </form>
+                                    </div>
+                                </div>
+
+                                <hr>
+                                <br>
+
+
+                                   {% for item in forum_content %}
+                               <div class="media">
+                        <a class="media-left" href="{% url 'other_profiles' item.to_dict.user %}" target="_blank">
+                       <img src="{{ comment_avatar | lookup:forloop.counter0 }}" alt="image" style="box-shadow: inset 0 0 6px rgb(200,200,200,0.3);border:1px solid rgb(112,103,263);height:70px;width:70px;border-radius:50%;" height="45" width="45"></a>&nbsp;
+                                   &nbsp;<div class="media-body">
+                                   <a href="{% url 'other_profiles' item.to_dict.user %}" target="_blank"><h4 class="media-heading">{{item.to_dict.userName}}</h4></a>
+                                <p>{{item.to_dict.detail}}</p>
+                                </div>
+                                    </div>
+
+                                <footer
+                                        style="width:100%;text-align:right;font-size:15px;;color:rgb(200,200,200);">
+                                    {{item.to_dict.date}}</footer>
+                                <hr>
+
+                                {% endfor %}
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+
+
+        {% endblock content %}
+        <!-- END: Content-->
+
+        <div class="sidenav-overlay"></div>
+        <div class="drag-target"></div>
+
+        <!-- BEGIN: Vendor JS-->
+        <script src="{% static 'app-assets/vendors/js/vendors.min.js' %}"></script>
+        <!-- BEGIN Vendor JS-->
+
+        <!-- BEGIN: Page Vendor JS-->
+        <script src="{% static 'app-assets/vendors/js/extensions/dropzone.min.js' %}"></script>
+        <script src="{% static 'app-assets/vendors/js/tables/datatable/datatables.min.js' %}"></script>
+        <script src="{% static 'app-assets/vendors/js/tables/datatable/datatables.buttons.min.js' %}"></script>
+        <script src="{% static 'app-assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js' %}"></script>
+        <script src="{% static 'app-assets/vendors/js/tables/datatable/buttons.bootstrap.min.js' %}"></script>
+        <script src="{% static 'app-assets/vendors/js/tables/datatable/dataTables.select.min.js' %}"></script>
+        <script src="{% static 'app-assets/vendors/js/tables/datatable/datatables.checkboxes.min.js' %}"></script>
+        <!-- END: Page Vendor JS-->
+
+        <!-- BEGIN: Theme JS-->
+        <script src="{% static 'app-assets/js/core/app-menu.js' %}"></script>
+        <script src="{% static 'app-assets/js/core/app.js' %}"></script>
+        <script src="{% static 'app-assets/js/scripts/components.js' %}"></script>
+        <!-- END: Theme JS-->
+
+        <!-- BEGIN: Page JS-->
+        <script src="{% static 'app-assets/js/scripts/ui/data-list-view.js' %}"></script>
+        <!-- END: Page JS-->
+
+</body>
+<!-- END: Body-->
+
+
+</html>

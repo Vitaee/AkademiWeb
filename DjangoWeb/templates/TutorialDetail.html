@@ -1,0 +1,135 @@
+{% extends 'Base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+<!-- BEGIN: Head-->
+
+<head>
+    <title>Akademi Forum</title>
+
+    <!-- BEGIN: Vendor CSS-->
+
+<style>
+.unititem{
+    box-shadow:0px 0px 3px 0px rgb(114,102,239);padding:10px;
+    cursor:pointer;
+}
+.unititem:hover{
+    background-color:rgb(114,102,239);
+    color:white;
+    transform:scale(1.05);
+}
+</style>
+
+
+
+    <!-- BEGIN: Prism JS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/prism.css' %}">
+    <!-- END: Prism JS-->
+
+</head>
+<!-- END: Head-->
+
+<!-- BEGIN: Body-->
+
+<body>
+
+    <!-- BEGIN: Content-->
+    <div class="app-content content">
+
+        <div class="content-wrapper">
+
+            <div class="content-body" >
+                <div class="row match-height">
+                    <div class="col-sm-12">
+                        <div class="card collapse-icon accordion-icon-rotate">
+
+                            <div class="card-content">
+                                <div class="card-body">
+                                                <div class="card-content">
+                                                    <div class="card-body" id = "data">
+                                                        {{tutorial_data.to_dict.data | safe}}
+                                                    </div>
+                                                     <h3>Yorum Yapın</h3>
+                                                        <div class="row">
+                                                            <div class="col-md-9">
+                                                            <form method="POST" id="form">
+                                                                {% csrf_token %}
+                                                                <input style="border:1px solid rgb(112,103,236);"
+                                                                    type="text" class="form-control"
+                                                                    placeholder="Bir yorum bırak" name="yorum">
+
+
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <button type="submit"
+                                                                    class="btn btn-outline-info w-100" name="yorum_buton">Gönder</button>
+                                                            </form>
+                                                            </div>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                            <br>
+                            {% for veri in yorumlar %}
+                            <ul class="chat-users-list-wrapper media-list">
+                                <li>
+                                    <div class="pr-1">
+                                        <span class="avatar m-0 avatar-md"><img class="media-object rounded-circle" src="{{avatars | lookup:forloop.counter0 }}" height="42" width="42" alt="YorumYapanlar">
+                                            <i></i>
+                                        </span>
+                                    </div>
+                                    <div class="user-chat-info">
+                                        <div class="contact-info">
+                                            <h5 class="font-weight-bold mb-0">{{veri.Yorum_yapan}}</h5>
+                                            <p class="truncate">{{veri.Yorum}}</p>
+                                        </div>
+                                        <div class="contact-meta">
+                                            <span class="float-right mb-25">{{veri.Tarih}}</span>
+                                        </div>
+                                    </div>
+                                </li>
+
+                            </ul>
+                            {% endfor %}
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+    </div>
+
+
+
+
+        <!-- END: Content-->
+
+        <div class="sidenav-overlay"></div>
+        <div class="drag-target"></div>
+
+        <!-- BEGIN: Vendor JS-->
+        <!-- BEGIN Vendor JS-->
+        <script>
+
+        </script>
+
+        <!-- END: Theme JS-->
+        <!-- END: Page JS-->
+
+        <!-- BEGIN: Prism JS-->
+
+        <script src="{% static 'assets/js/prism.js' %}"></script>
+        <!-- END: Prism JS-->
+
+<!-- END: Body-->
+ {% endblock content %}
+
+</body>
+</html>
+

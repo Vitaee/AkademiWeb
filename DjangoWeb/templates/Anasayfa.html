@@ -1,0 +1,371 @@
+{% extends 'Base.html' %} {% load static %} {% block content %}
+
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+<!-- BEGIN: Head-->
+
+<head>
+    <title>Akademi</title>
+
+    <!-- BEGIN: Vendor CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/vendors/css/vendors.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/vendors/css/charts/apexcharts.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/vendors/css/extensions/tether-theme-arrows.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/vendors/css/extensions/tether.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/vendors/css/extensions/shepherd-theme-default.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/vendors/css/extensions/sweetalert2.min.css' %}">
+    <!-- END: Vendor CSS-->
+
+    <<!-- BEGIN: Page CSS-->
+        <link rel="stylesheet" type="text/css" href="{% static 'app-assets/css/core/menu/menu-types/vertical-menu.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'app-assets/css/core/colors/palette-gradient.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'app-assets/css/pages/dashboard-analytics.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'app-assets/css/pages/card-analytics.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'app-assets/css/plugins/tour/tour.css' %}">
+        <!-- END: Page CSS-->
+
+        <!-- BEGIN: Custom CSS-->
+        <link rel="stylesheet" type="text/css" href="{% static 'assets/css/style.css'%}">
+        <!-- END: Custom CSS-->
+
+</head>
+<script>window.onload = function () {
+        var sonuc=1500- {{259}};
+        document.getElementById("kalanDers").innerHTML=sonuc;};</script>
+
+
+<body class="vertical-layout vertical-menu-modern dark-layout 2-columns  navbar-floating footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="2-columns" data-layout="dark-layout">
+   <!-- END: Main Menu-->
+
+    <!-- BEGIN: Content-->
+    <!-- BEGIN: Content-->
+    <div class="app-content content">
+        <div class="content-overlay"></div>
+        <div class="header-navbar-shadow"></div>
+        <div class="content-wrapper">
+            <div class="content-header row">
+            </div>
+            <div class="content-body">
+                <!-- Dashboard Analytics Start -->
+                <section id="dashboard-analytics">
+                    <div class="row match-height">
+                        <div class="col-lg-6 col-md-12 col-sm-12">
+                            <div class="card bg-analytics text-white">
+                                <div class="card-content">
+                                     <div class="card-body text-center">
+                                        <img src="{% static 'app-assets/images/elements/decore-left.png' %}" class="img-left" alt="card-img-left">
+                                        <img src="{% static 'app-assets/images/elements/decore-right.png' %}" class="img-right" alt="card-img-right">
+                                        <div class="avatar avatar-xl bg-primary shadow mt-0">
+                                            <div class="avatar-content">
+                                                <i class="feather icon-star white font-large-1"></i>
+                                            </div>
+                                        </div>
+                                        <div class="text-center">
+                                            <h1 class="mb-2 text-white">Tebrikler, Can İlgu</h1>
+                                            <p class="m-auto w-75">Şu ana kadar <strong>34</strong> tane ders bitirdiniz.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-6 col-12 ">
+                            <div class="card ">
+                                <div class="card-header d-flex justify-content-between pb-0 ">
+                                    <h4 class="card-title ">Hesap</h4>
+                                </div>
+                                <div class="card-content ">
+                                    <div class="card-body pt-0 ">
+                                        <div class="row ">
+                                            <div class="col-sm-2 col-12 d-flex flex-column flex-wrap text-center mt-3">
+
+
+                                            </div>
+                                            <div class="col-sm-10 col-12 d-flex justify-content-center ">
+                                                <div id="support-tracker-chart "></div>
+                                            </div>
+                                        </div>
+                                        <div class="chart-info d-flex justify-content-between ">
+                                            <div class="text-center">
+                                                <p class="mb-50 ">Üyelik Tipi</p>
+                                                <span class="font-large-1 ">Moderatör</span>
+                                            </div>
+                                            <div class="text-center ">
+                                                <p class="mb-50 ">Puanı</p>
+                                                <span class="font-large-1 ">153</span>
+                                            </div>
+                                            <div class="text-center ">
+                                                <p class="mb-50 ">Türü</p>
+                                                <span class="font-large-1 ">{% if user_data.userNickname == "Altın Üye" %}
+                                                  <span style="color:  #cfb53b;">Altın Üye</span>
+                                                  {% else %}
+                                                  <span>Altın Üye</span>
+                                                {% endif %}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+
+
+                    <div class="row macth-height">
+                        <div class="col-md-6 col-12">
+                            <div class="card" style="height: 500px">
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <div class="row pb-50">
+                                            <div class="col-lg-6 col-12 d-flex justify-content-between flex-column order-lg-1 order-2 mt-lg-0 mt-2">
+                                                <div>
+                                                    <h2 class="text-bold-700 mb-25">Okunan Dersler</h2>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-12 d-flex justify-content-between flex-column text-right order-lg-2 order-1">
+                                                <div id="avg-session-chart"></div>
+                                            </div>
+                                        </div>
+                                        <hr />
+                                         
+                                        <div class="row avg-sessions pt-50">
+
+
+
+                                            <div class="col-6 ">
+                                                <p class="mb-0" >Python</p>
+                                                <div data-toggle="tooltip" class="progress progress-bar-primary mt-25" title="29%">
+                                                    <div class="progress-bar" role="progressbar" aria-valuenow="00" aria-valuemin="00" aria-valuemax="100" style='width: 29%'></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-6 ">
+                                                <p class="mb-0" >C++</p>
+                                                <div data-toggle="tooltip" class="progress progress-bar-primary mt-25" title="79%">
+                                                    <div class="progress-bar" role="progressbar" aria-valuenow="00" aria-valuemin="00" aria-valuemax="100" style='width: 79%'></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-6 ">
+                                                <p class="mb-0" >Java</p>
+                                                <div data-toggle="tooltip" class="progress progress-bar-primary mt-25" title="59%">
+                                                    <div class="progress-bar" role="progressbar" aria-valuenow="00" aria-valuemin="00" aria-valuemax="100" style='width: 59%'></div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                <div class="col-xl-6">
+                    <div class="card w-100">
+                        <div class="card-header d-flex justify-content-between pb-0">
+                            <div class="avatar avatar-xl mr-auto ml-auto">
+                                <img class="img-fluid" src="{% static 'app-assets/images/logo/logo-dark.png' %}">
+                            </div>
+
+                        </div>
+                        <div class="card-content" style = "height: 400px;">
+                            <div class="card-body text-center mx-auto">
+                                <div class="row m-0 mt-1">
+                                    <div class="col-sm-12 text-center">
+                                        <h4>{{ user_data.userFullname }}</h4>
+                                    </div>
+                                    <div class="col-sm-12 text-center">
+                                        <p class="">{{ user_data.userJob }}</p>
+
+                                    </div>
+                                </div>
+                                <hr class="my-2">
+                                <p class="font-weight-bold mr-auto ml-auto">{{user_data.userBio}}</p>
+                                <div class="d-flex justify-content-between">
+
+
+                                    <div class="uploads mr-auto ml-auto">
+                                        <div class="float-left">
+                                            <i class="fa fa-star text-warning mr-50"></i> Moderatör
+                                        </div>
+                                    </div>
+                                    <div class="followers mr-auto ml-auto">
+                                        <div class="float-right">
+                                            <i class="feather icon-bar-chart text-primary mr-50"></i> 9 Seviye
+                                        </div>
+                                    </div>
+
+                                </div>
+                                {% if request.session.id in user_data.userFollowers %}
+                                <p class="text-success">Takip Ediliyor</p>
+                                {% elif request.session.id == user_data.userUID %}
+                                <p></p>
+                                {% else %}
+                                <form method="POST" id="form">
+                                    {% csrf_token %}
+                                   <!-- <button type="submit"  class="btn btn-primary glow mb-1 mb-sm-0 mr-0 mr-sm-1 waves-effect waves-light" name="takipet">Takip Et</button>-->
+                                    <button type="submit" name="takipet" class="btn btn-outline-success mr-1 mb-1 waves-effect waves-light" id="position-bottom-end">Takip Et</button>
+                                </form>
+                                    {% endif %}
+                                <div class="row text-center mx-0 mt-5 " >
+                                    <div
+                                        class="col-4  border-right d-flex align-items-between flex-column py-1">
+                                        <p class="mb-50">Ziyaretçi Sayısı</p>
+                                        <p class="font-large-1 text-bold-700 mb-50">84</p>
+                                    </div>
+                                    <div
+                                        class="col-4  border-right d-flex align-items-between flex-column py-1">
+                                        <p class="mb-50">Takip Edenler</p>
+                                        <p class="font-large-1 text-bold-700 mb-50">52</p>
+                                    </div>
+                                    <div class="col-4  d-flex align-items-between flex-column py-1">
+                                        <p class="mb-50">Takip Edilenler</p>
+                                        <p class="font-large-1 text-bold-700 mb-50">10</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                    </div>
+                    <div class="row macth-height">
+                    <div class="col-lg-4 col-12">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between pb-0">
+                                    <h4 class="card-title">Dersler Hakkında</h4>
+
+                                </div>
+                                <div>
+                                <div class="card-content">
+                                    <div class="card-body py-0" style="position: relative;">
+                                        <div id="customer-chart" style="min-height: 287.805px;"><div id="apexchartswhqljl19" class="apexcharts-canvas apexchartswhqljl19 light" style="width: 338px; height: 287.805px;"><svg id="SvgjsSvg1993" width="338" height="287.8048780487805" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" class="apexcharts-svg" xmlns:data="ApexChartsNS" transform="translate(0, 0)" style="background: transparent;"><g id="SvgjsG1995" class="apexcharts-inner apexcharts-graphical" transform="translate(33.5, 0)"><defs id="SvgjsDefs1994"><clipPath id="gridRectMaskwhqljl19"><rect id="SvgjsRect1996" width="278" height="300" x="-2.5" y="-2.5" rx="0" ry="0" fill="#ffffff" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0"></rect></clipPath><clipPath id="gridRectMarkerMaskwhqljl19"><rect id="SvgjsRect1997" width="275" height="297" x="-1" y="-1" rx="0" ry="0" fill="#ffffff" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0"></rect></clipPath><radialGradient id="SvgjsRadialGradient2003" gradientUnits="userSpaceOnUse" cx="136.5" cy="147.5" r="133.90243902439025"><stop id="SvgjsStop2004" stop-opacity="1" stop-color="rgba(115,103,240,1)" offset="0"></stop><stop id="SvgjsStop2005" stop-opacity="1" stop-color="rgba(169,162,246,1)" offset="1"></stop><stop id="SvgjsStop2006" stop-opacity="1" stop-color="rgba(169,162,246,1)" offset="1"></stop></radialGradient><radialGradient id="SvgjsRadialGradient2009" gradientUnits="userSpaceOnUse" cx="136.5" cy="147.5" r="133.90243902439025"><stop id="SvgjsStop2010" stop-opacity="1" stop-color="rgba(255,159,67,1)" offset="0"></stop><stop id="SvgjsStop2011" stop-opacity="1" stop-color="rgba(255,192,133,1)" offset="1"></stop><stop id="SvgjsStop2012" stop-opacity="1" stop-color="rgba(255,192,133,1)" offset="1"></stop></radialGradient><radialGradient id="SvgjsRadialGradient2015" gradientUnits="userSpaceOnUse" cx="136.5" cy="147.5" r="133.90243902439025"><stop id="SvgjsStop2016" stop-opacity="1" stop-color="rgba(234,84,85,1)" offset="0"></stop><stop id="SvgjsStop2017" stop-opacity="1" stop-color="rgba(242,146,146,1)" offset="1"></stop><stop id="SvgjsStop2018" stop-opacity="1" stop-color="rgba(242,146,146,1)" offset="1"></stop></radialGradient></defs><g id="SvgjsG1999" class="apexcharts-pie" data:innerTranslateX="0" data:innerTranslateY="-25"><g id="SvgjsG2000" transform="translate(0, -5) scale(1)"><g id="SvgjsG2001" class="apexcharts-slices"><g id="SvgjsG2002" class="apexcharts-series apexcharts-pie-series" seriesName="New" rel="1" data:realIndex="0"><path id="SvgjsPath2007" d="M 136.5 13.597560975609753 A 133.90243902439025 133.90243902439025 0 1 1 39.47404931191406 239.78124440943384 L 136.5 147.5 L 136.5 13.597560975609753" fill="url(#SvgjsRadialGradient2003)" fill-opacity="1" stroke="#ffffff" stroke-opacity="1" stroke-linecap="butt" stroke-width="5" stroke-dasharray="0" class="apexcharts-pie-area apexcharts-pie-slice-0" index="0" j="0" data:angle="226.43573381950776" data:startAngle="0" data:strokeWidth="5" data:value="690" data:pathOrig="M 136.5 13.597560975609753 A 133.90243902439025 133.90243902439025 0 1 1 39.47404931191406 239.78124440943384 L 136.5 147.5 L 136.5 13.597560975609753"></path></g><g id="SvgjsG2008" class="apexcharts-series apexcharts-pie-series" seriesName="Returning" rel="2" data:realIndex="1"><path id="SvgjsPath2013" d="M 39.47404931191406 239.78124440943384 A 133.90243902439025 133.90243902439025 0 0 1 35.600645488235514 59.4705535869399 L 136.5 147.5 L 39.47404931191406 239.78124440943384" fill="url(#SvgjsRadialGradient2009)" fill-opacity="1" stroke="#ffffff" stroke-opacity="1" stroke-linecap="butt" stroke-width="5" stroke-dasharray="0" class="apexcharts-pie-area apexcharts-pie-slice-1" index="0" j="1" data:angle="84.6672743846855" data:startAngle="226.43573381950776" data:strokeWidth="5" data:value="258" data:pathOrig="M 39.47404931191406 239.78124440943384 A 133.90243902439025 133.90243902439025 0 0 1 35.600645488235514 59.4705535869399 L 136.5 147.5 L 39.47404931191406 239.78124440943384"></path></g><g id="SvgjsG2014" class="apexcharts-series apexcharts-pie-series" seriesName="Referrals" rel="3" data:realIndex="2"><path id="SvgjsPath2019" d="M 35.600645488235514 59.4705535869399 A 133.90243902439025 133.90243902439025 0 0 1 136.47662961574437 13.597563015060501 L 136.5 147.5 L 35.600645488235514 59.4705535869399" fill="url(#SvgjsRadialGradient2015)" fill-opacity="1" stroke="#ffffff" stroke-opacity="1" stroke-linecap="butt" stroke-width="5" stroke-dasharray="0" class="apexcharts-pie-area apexcharts-pie-slice-2" index="0" j="2" data:angle="48.89699179580674" data:startAngle="311.10300820419326" data:strokeWidth="5" data:value="149" data:pathOrig="M 35.600645488235514 59.4705535869399 A 133.90243902439025 133.90243902439025 0 0 1 136.47662961574437 13.597563015060501 L 136.5 147.5 L 35.600645488235514 59.4705535869399"></path></g></g></g></g><line id="SvgjsLine2020" x1="0" y1="0" x2="273" y2="0" stroke="#b6b6b6" stroke-dasharray="0" stroke-width="1" class="apexcharts-ycrosshairs"></line><line id="SvgjsLine2021" x1="0" y1="0" x2="273" y2="0" stroke-dasharray="0" stroke-width="0" class="apexcharts-ycrosshairs-hidden"></line></g></svg><div class="apexcharts-legend"></div><div class="apexcharts-tooltip dark"><div class="apexcharts-tooltip-series-group"><span class="apexcharts-tooltip-marker" style="background-color: rgb(115, 103, 240);"></span><div class="apexcharts-tooltip-text" style="font-family: Helvetica, Arial, sans-serif; font-size: 12px;"><div class="apexcharts-tooltip-y-group"><span class="apexcharts-tooltip-text-label"></span><span class="apexcharts-tooltip-text-value"></span></div><div class="apexcharts-tooltip-z-group"><span class="apexcharts-tooltip-text-z-label"></span><span class="apexcharts-tooltip-text-z-value"></span></div></div></div><div class="apexcharts-tooltip-series-group"><span class="apexcharts-tooltip-marker" style="background-color: rgb(255, 159, 67);"></span><div class="apexcharts-tooltip-text" style="font-family: Helvetica, Arial, sans-serif; font-size: 12px;"><div class="apexcharts-tooltip-y-group"><span class="apexcharts-tooltip-text-label"></span><span class="apexcharts-tooltip-text-value"></span></div><div class="apexcharts-tooltip-z-group"><span class="apexcharts-tooltip-text-z-label"></span><span class="apexcharts-tooltip-text-z-value"></span></div></div></div><div class="apexcharts-tooltip-series-group"><span class="apexcharts-tooltip-marker" style="background-color: rgb(234, 84, 85);"></span><div class="apexcharts-tooltip-text" style="font-family: Helvetica, Arial, sans-serif; font-size: 12px;"><div class="apexcharts-tooltip-y-group"><span class="apexcharts-tooltip-text-label"></span><span class="apexcharts-tooltip-text-value"></span></div><div class="apexcharts-tooltip-z-group"><span class="apexcharts-tooltip-text-z-label"></span><span class="apexcharts-tooltip-text-z-value"></span></div></div></div></div></div></div>
+                                    <div class="resize-triggers"><div class="expand-trigger"><div></div></div><div class="contract-trigger"></div></div></div>
+                                    <ul class="list-group list-group-flush customer-info">
+                                        <li class="list-group-item d-flex justify-content-between ">
+                                            <div class="series-info">
+                                                <i class="fa fa-circle font-small-3 text-primary"></i>
+                                                <span class="text-bold-600">Tüm Dersler</span>
+                                            </div>
+                                            <div class="product-result">
+                                                <span>1500</span>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between ">
+                                            <div class="series-info">
+                                                <i class="fa fa-circle font-small-3 text-warning"></i>
+                                                <span class="text-bold-600">Kalan Dersler</span>
+                                            </div>
+                                            <div class="product-result">
+                                                <span id="kalanDers">258</span>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between ">
+                                            <div class="series-info">
+                                                <i class="fa fa-circle font-small-3 text-danger"></i>
+                                                <span class="text-bold-600">Okunan Dersler</span>
+                                            </div>
+                                            <div class="product-result">
+                                                <span>{{request.session.lesson}}</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                        <div class="card col-lg-4 col-12">
+                                <div class="card-header">
+                                    <h4 class="card-title">Duyurular</h4>
+                                </div>
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <ul class="activity-timeline timeline-right list-unstyled">
+                                            <li>
+                                                <div class="timeline-icon bg-primary">
+                                                    <i class="feather icon-plus font-medium-2"></i>
+                                                </div>
+                                                <div class="timeline-info">
+                                                    <p class="font-weight-bold">Dersler</p>
+                                                    <span>Bazı derslerimiz revize edilmekte. Anlayışınız için teşekkürler.</span>
+                                                </div>
+                                                <small class="">25 days ago</small>
+                                            </li>
+                                            <li>
+                                                <div class="timeline-icon bg-warning">
+                                                    <i class="feather icon-alert-circle font-medium-2"></i>
+                                                </div>
+                                                <div class="timeline-info">
+                                                    <p class="font-weight-bold">Sistemsel Düzenleme</p>
+                                                    <span>Web sitemizde hali hazırda düzenlemeler yapılmaktadır.</span>
+                                                </div>
+                                                <small class="">15 days ago</small>
+                                            </li>
+                                            <li>
+                                                <div class="timeline-icon bg-success">
+                                                    <i class="feather icon-check font-medium-2"></i>
+                                                </div>
+                                                <div class="timeline-info">
+                                                    <p class="font-weight-bold">Tamamlananlar</p>
+                                                    <span>C ve C++ Dersleri Tamamlanmıştır. Güzelce öğrenmeniz dileğiyle.
+                                                    </span>
+                                                </div>
+                                                <small class="">20 minutes ago</small>
+                                            </li>
+                                            <li>
+                                                <div class="timeline-icon bg-danger">
+                                                    <i class="feather icon-cast font-medium-2 align-middle"></i>
+                                                </div>
+                                                <div class="timeline-poster">
+                                                    <p class="font-weight-bold mb-0">Yakında!</p>
+                                                    <span class="font-small-3">Birçok özellik pek yakında sizlerle!</span>
+                                                </div>
+                                                <small class="text-muted">20 days ago</small>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+                            {% endblock content %}
+                            <!-- END: Content-->
+
+                            <div class="sidenav-overlay "></div>
+                            <div class="drag-target "></div>
+
+                            <!-- BEGIN: Vendor JS-->
+                            <script src="{% static 'app-assets/vendors/js/vendors.min.js' %}"></script>
+                            <!-- BEGIN Vendor JS-->
+                            <script src="{% static 'app-assets/js/core/app-menu.js' %}"></script>
+                            <script src="{% static 'app-assets/js/core/app.js' %}"></script>
+                            <script src="{% static 'app-assets/vendors/js/extensions/sweetalert2.all.min.js' %}"></script>
+                            <script src="{% static 'app-assets/vendors/js/extensions/polyfill.min.js' %}"></script>
+                            <script src="{% static 'app-assets/js/scripts/extensions/sweet-alerts.js' %}"></script>
+                            <script src="{% static 'app-assets/js/scripts/components.js' %}"></script>
+
+                            <!-- BEGIN: Page Vendor JS-->
+                            <script src="{% static 'app-assets/vendors/js/charts/apexcharts.min.js' %} "></script>
+                            <script src="{% static 'app-assets/vendors/js/extensions/tether.min.js' %} "></script>
+                            <script src="{% static 'app-assets/vendors/js/extensions/shepherd.min.js' %} "></script>
+                            <!-- END: Page Vendor JS-->
+
+                            <!-- BEGIN: Page JS-->
+                            <script src="{% static 'app-assets/js/scripts/pages/dashboard-analytics.js ' %} "></script>
+                            <!-- END: Page JS-->
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,131 @@
+{% extends 'Base.html' %} {% load static %} {% block content %}
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+<!-- BEGIN: Head-->
+
+<head>
+    <title>Akademi Forum</title>
+
+    <!-- BEGIN: Vendor CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/vendors/css/vendors.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/vendors/css/tables/datatable/datatables.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/vendors/css/file-uploaders/dropzone.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/vendors/css/tables/datatable/extensions/dataTables.checkboxes.css' %}">
+    <!-- BEGIN: Vendor CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/vendors/css/vendors.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/vendors/css/editors/quill/katex.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/vendors/css/editors/quill/monokai-sublime.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/vendors/css/editors/quill/quill.snow.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/vendors/css/editors/quill/quill.bubble.css' %}">
+    <!-- END: Vendor CSS-->
+    <!-- END: Vendor CSS-->
+
+
+    <!-- BEGIN: Page CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/css/core/menu/menu-types/vertical-menu.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/css/core/colors/palette-gradient.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/css/plugins/file-uploaders/dropzone.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/css/pages/data-list-view.css' %}">
+    <!-- END: Page CSS-->
+
+    <!-- BEGIN: Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/style.css' %}">
+    <!-- END: Custom CSS-->
+
+    <!-- BEGIN: Prism JS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/prism.css' %}">
+    <!-- END: Prism JS-->
+
+</head>
+<!-- END: Head-->
+
+<!-- BEGIN: Body-->
+
+<body class="vertical-layout vertical-menu-modern dark-layout 2-columns  navbar-floating footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="2-columns" data-layout="dark-layout">
+    <!-- END: Main Menu-->
+
+    <!-- BEGIN: Content-->
+    <div class="app-content content">
+        <div class="content-overlay"></div>
+        <div class="header-navbar-shadow"></div>
+        <div class="content-wrapper">
+            <div class="content-header row">
+
+
+            </div>
+            <div class="content-body">
+                <!-- Data list view starts -->
+                <section class="full-editor">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Yeni Forum Ekle</h4>
+                                </div>
+                                <div class="card-content collapse show">
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="input_forumBaslik" name="input_forumBaslik" placeholder="Konu başlığını giriniz..." required>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div id="full-wrapper">
+                                                    <div id="full-container">
+                                                        <div class="editor">
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div style="margin-top: 20px;">
+                                            <button class="btn bg-gradient-info mr-1 mb-1 waves-effect waves-light">Gönder</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <pre>
+                            <code class="language-python">
+                     
+                            </code>
+                        </pre>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <!-- END: Content-->
+
+        <div class="sidenav-overlay"></div>
+        <div class="drag-target"></div>
+
+        <!-- BEGIN: Vendor JS-->
+        <script src="{% static 'app-assets/vendors/js/vendors.min.js' %}"></script>
+        <!-- BEGIN Vendor JS-->
+
+        <!-- BEGIN: Page Vendor JS-->
+        <script src="{% static 'app-assets/vendors/js/editors/quill/katex.min.js' %}"></script>
+        <script src="{% static 'app-assets/vendors/js/editors/quill/highlight.min.js' %}"></script>
+        <script src="{% static 'app-assets/vendors/js/editors/quill/quill.min.js' %}"></script>
+        <script src="{% static 'app-assets/vendors/js/extensions/jquery.steps.min.js' %}"></script>
+        <script src="{% static 'app-assets/vendors/js/forms/validation/jquery.validate.min.js' %}"></script>
+        <script src="{% static 'app-assets/js/scripts/editors/editor-quill.js' %}"></script>
+
+        <!-- BEGIN: Theme JS-->
+        <script src="{% static 'app-assets/js/core/app-menu.js' %}"></script>
+        <script src="{% static 'app-assets/js/core/app.js' %}"></script>
+        <script src="{% static 'app-assets/js/scripts/components.js' %}"></script>
+        <!-- END: Theme JS-->
+        <!-- END: Page JS-->
+
+        <!-- BEGIN: Prism JS-->
+        <script src="{% static 'assets/js/prism.js' %}"></script>
+        <!-- END: Prism JS-->
+</body>
+<!-- END: Body-->
+{% endblock content %}
+
+</html>
