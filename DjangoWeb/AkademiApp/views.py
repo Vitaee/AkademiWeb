@@ -4,13 +4,9 @@ from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.core.cache import cache
 import traceback,random
-#from AkademiWeb.settings import db, auth, db_storage, DEBUG
+#from AkademiWeb.settings import db, auth, db_storage, DEBUG database settings.
 from google.cloud import firestore
 
-
-
-def AnaSayfa(request):
-    return render(request, 'Ayarlar.html')
 
 def girisSayfasi(request):
     if auth.current_user is not None:
