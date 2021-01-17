@@ -1,0 +1,422 @@
+{% extends 'Base.html' %} {% load static %} {% block content %}
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+<!-- BEGIN: Head-->
+<head>
+    <title>Kullanıcı Profili</title>
+
+    <!-- BEGIN: Vendor CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/vendors/css/vendors.min.css' %}">
+    <!-- END: Vendor CSS-->
+    <!-- BEGIN: Theme CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/css/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/css/bootstrap-extended.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/css/colors.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/css/components.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/css/themes/dark-layout.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/css/themes/semi-dark-layout.css' %}">
+
+    <!-- BEGIN: Page CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/css/core/menu/menu-types/vertical-menu.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/css/core/colors/palette-gradient.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/css/pages/users.css' %}">
+    <!-- END: Page CSS-->
+
+    <!-- BEGIN: Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/style.css' %}">
+    <!-- END: Custom CSS-->
+
+</head>
+<!-- END: Head-->
+
+<!-- BEGIN: Body-->
+
+<body class="vertical-layout vertical-menu-modern dark-layout 2-columns navbar-floating footer-static menu-expanded pace-done" data-open="click" data-menu="vertical-menu-modern" data-col="2-columns" data-layout="dark-layout"><div class="pace  pace-inactive"><div class="pace-progress" data-progress-text="100%" data-progress="99" style="transform: translate3d(100%, 0px, 0px);">
+  <div class="pace-progress-inner"></div>
+</div>
+<div class="pace-activity"></div></div>
+
+    <!-- BEGIN: Header-->
+
+
+
+    <!-- END: Header-->
+
+
+    <!-- BEGIN: Main Menu-->
+
+    <!-- END: Main Menu-->
+
+    <!-- BEGIN: Content-->
+    <div class="app-content content">
+
+
+        <div class="content-wrapper">
+            <div class="content-header row">
+                <div class="content-header-left col-md-9 col-12 mb-2">
+                    <div class="row breadcrumbs-top">
+                        <div class="col-12">
+                            <div class="breadcrumb-wrapper col-12">
+                                <ol  class="breadcrumb">&nbsp;
+                                    <li class="breadcrumb-item"><a href="{% url 'anasayfa' %}">Anasayfa</a></li>
+                                    <li class="breadcrumb-item"><a href="{% url 'profil' %}">Profil</a></li>
+                                    <li class="breadcrumb-item"></li>
+                                    <h4 class="float-left">{{request.session.userFullname2}}</h4>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="content-body">
+                <div id="user-profile">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="profile-header mb-2">
+                                <div class="relative">
+                                    <div class="cover-container">
+                                        <img class="img-fluid bg-cover rounded-0 w-100" src="{% static 'app-assets/images/profile/user-uploads/realIMG.png' %}" alt="User Profile Image">
+                                    </div>
+                                    <div class="profile-img-container d-flex align-items-center justify-content-between">
+                                        <img src="{{request.session.avatar2}}" class="rounded-circle img-border box-shadow-1" alt="Card image">
+                                        <div class="float-right">
+                                {% if request.session.id in request.session.userFollowers2 %}
+                                <form method="POST" id="form">
+                                    {% csrf_token %}
+                                    <button type="submit" name="unfollow" class="btn btn-outline-danger mr-1 mb-1 waves-effect waves-light" id="position-bottom-end">Takibi Bırak</button>
+                                </form>
+                                {% else %}
+                                <form method="POST">
+                                    {% csrf_token %}
+                                    <button type="submit" name="takipet" class="btn btn-outline-success mr-1 mb-1 waves-effect waves-light">Takip Et</button>
+                                </form>
+                                    {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-end align-items-center profile-header-nav">
+                                    <nav class="navbar navbar-expand-sm w-100 pr-0">
+                                        <button class="navbar-toggler pr-0" type="button" data-toggle="collapse" data-target="navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                            <span class="navbar-toggler-icon"><i class="feather icon-align-justify"></i></span>
+                                        </button>
+                                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                            <ul class="navbar-nav justify-content-around w-75 ml-sm-auto">
+                                                <li class="nav-item px-sm-0">
+                                                    <a href="#" class="nav-link font-small-3">Events</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <section id="profile-info">
+                        <div class="row">
+                            <div class="col-lg-3 col-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4>Hakkımda</h4>
+                                        <i class="feather icon-more-horizontal cursor-pointer"></i>
+                                    </div>
+                                    <div class="card-body">
+                                        <p>{{request.session.userBio2}}</p>
+                                        <div class="mt-1">
+                                            <h6 class="mb-0">Puanım:</h6>
+                                            <p>{{request.session.userPoint2}}</p>
+                                        </div>
+                                        <div class="mt-1">
+                                            <h6 class="mb-0">Kayıt Tarihi:</h6>
+                                            <p>{{request.session.userRegistrationDate2}}</p>
+                                        </div>
+                                        <div class="mt-1">
+                                            <h6 class="mb-0">Hesap Türü:</h6>
+                                            <p>{{request.session.userType}}</p>
+                                        </div>
+                                        <div class="mt-1">
+                                            <h6 class="mb-0">Email:</h6>
+                                            <p>{{request.session.userEmail2}}</p>
+                                        </div>
+                                        <div class="mt-1">
+                                            <h6 class="mb-0">Website:</h6>
+                                            <p>{{request.session.userWebsite2}}</p>
+                                        </div>
+                                        <div class="mt-1">
+                                            <button type="button" class="btn btn-sm btn-icon btn-primary mr-25 p-25 waves-effect waves-light"><i class="feather icon-facebook"></i></button>
+                                            <button type="button" class="btn btn-sm btn-icon btn-primary mr-25 p-25 waves-effect waves-light"><i class="feather icon-twitter"></i></button>
+                                            <button type="button" class="btn btn-sm btn-icon btn-primary p-25 waves-effect waves-light"><i class="feather icon-instagram"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title">Önerilen Forum Konuları</h4>
+                                    </div>
+                                    <div class="card-body suggested-block">
+                                        {% if forum_topics is None %}
+                                        <p>Henüz forum konusu yazılmamış.</p>
+                                        {% else %}
+                                        {% for forum in forum_topics %}
+                                        <div class="d-flex justify-content-start align-items-center mb-1">
+                                            <div class="avatar mr-50">
+                                                <a href="{% url 'other_profiles' forum.to_dict.user %}"><img src="{{forum_user|lookup:forloop.counter0}}" alt="avtar img holder" height="35" width="35"></a>
+                                            </div>
+                                            <div class="user-page-info">
+                                                <a href="{% url 'forumContent' forum.id %}"><p>{{forum.to_dict.name}}</p></a>
+                                                <span class="font-small-2">{{forum.to_dict.type}}</span>
+                                            </div>
+                                            <div class="ml-auto">
+                                                <a href="{% url 'forumContent' forum.id %}"><i class="feather icon-arrow-right-circle"></i></a>
+                                            </div>
+                                        </div>
+
+                                        {% endfor %}
+
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4>Twitter Feeds</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="twitter-feed">
+                                            <div class="d-flex justify-content-start align-items-center mb-1">
+                                                <div class="avatar mr-50">
+                                                    <img src="{% static 'app-assets/images/portrait/small/avatar-s-12.jpg' %}" alt="avtar img holder" height="35" width="35">
+                                                </div>
+                                                <div class="user-page-info">
+                                                    <p class="text-bold-600 mb-0">Tiana Vercetti</p>
+                                                    <small>@tiana59</small>
+                                                    <div class="badge badge-primary badge-pill badge-sm p-0">
+                                                        <i class="feather icon-check font-small-1"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p class="mb-0">I love cookie chupa chups sweet tart apple pie chocolate bar. Jelly-o oat cake chupa chups.</p>
+                                            <p class="text-primary">#js #vuejs</p>
+                                            <small>12 Dec 2018</small>
+                                        </div>
+                                        <div class="twitter-feed mt-2">
+                                            <div class="d-flex justify-content-start align-items-center mb-1">
+                                                <div class="avatar mr-50">
+                                                    <img src="{% static 'app-assets/images/portrait/small/avatar-s-12.jpg' %}" alt="avtar img holder" height="35" width="35">
+                                                </div>
+                                                <div class="user-page-info">
+                                                    <p class="text-bold-600 mb-0">Tiana Vercetti</p>
+                                                    <small>@tiana59</small>
+                                                    <div class="badge badge-primary badge-pill badge-sm p-0">
+                                                        <i class="feather icon-check font-small-1"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p class="mb-0">Carrot cake cake gummies I love I love tiramisu. Biscuit marzipan cookie lemon drops.</p>
+                                            <p class="text-primary">#python</p>
+                                            <small>11 Dec 2018</small>
+                                        </div>
+                                        <div class="twitter-feed mt-2">
+                                            <div class="d-flex justify-content-start align-items-center mb-1">
+                                                <div class="avatar mr-50">
+                                                    <img src="{% static 'app-assets/images/portrait/small/avatar-s-12.jpg' %}" alt="avtar img holder" height="35" width="35">
+                                                </div>
+                                                <div class="user-page-info">
+                                                    <p class="text-bold-600 mb-0">Tiana Vercetti</p>
+                                                    <small>@tiana59</small>
+                                                    <div class="badge badge-primary badge-pill badge-sm p-0">
+                                                        <i class="feather icon-check font-small-1"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p class="mb-0">I love cookie chupa chups sweet tart apple pie chocolate bar. Jelly-o oat cake chupa chups.</p>
+                                            <small>10 Dec 2018</small>
+                                        </div>
+                                        <div class="twitter-feed mt-2">
+                                            <div class="d-flex justify-content-start align-items-center mb-1">
+                                                <div class="avatar mr-50">
+                                                    <img src="{% static 'app-assets/images/portrait/small/avatar-s-12.jpg' %}" alt="avtar img holder" height="35" width="35">
+                                                </div>
+                                                <div class="user-page-info">
+                                                    <p class="text-bold-600 mb-0">Tiana Vercetti</p>
+                                                    <small>@tiana59</small>
+                                                    <div class="badge badge-primary badge-pill badge-sm p-0">
+                                                        <i class="feather icon-check font-small-1"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p class="mb-0">Muffin candy caramels. I love caramels tiramisu jelly. Pie I love wafer. Chocolate cake lollipop tootsie roll cake.</p>
+                                            <p class="text-primary">#django #vuejs</p>
+                                            <small>9 Dec 018</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row text-center mx-0">
+                                    <div class="col-4  border-right d-flex align-items-between flex-column py-1">
+                                        <p class="mb-50">Ziyaretçi Sayısı</p>
+                                        <p class="font-large-1 text-bold-700 mb-50">{{ request.session.userVisitors2 | length}}</p>
+                                    </div>
+                                    <div class="col-4  border-right d-flex align-items-between flex-column py-1">
+                                        <p class="mb-50">Takip Edenler</p>
+                                        <p class="font-large-1 text-bold-700 mb-50">{{ request.session.userFollowers2 | length}}</p>
+                                    </div>
+                                    <div class="col-4  d-flex align-items-between flex-column py-1">
+                                        <p class="mb-50">Takip Edilenler</p>
+                                        <p class="font-large-1 text-bold-700 mb-50">{{ request.session.userFollowing2 | length}}</p>
+                                    </div>
+                                </div>
+                                    </div>
+
+                                </div>
+                                {% if forum_detay|length == 0 %}
+                                <div class="card">
+                                    <div class="card-body">
+                                        <p>Henüz forum konusu açılmamış.</p>
+                                        <a href="{% url 'forumYeniKonu' %}"><i class="fa fa-arrow-circle-o-right">&nbsp;&nbsp;Yeni bir forum konusu açmaya ne dersin?</i></a>
+                                    </div>
+                                </div>
+                                {% else %}
+
+                                {% for forum in forums %}
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-start align-items-center mb-1">
+                                            <div class="avatar mr-1">
+                                                <img src="{{avatar}}" alt="avtar img holder" height="45" width="45">
+                                            </div>
+                                            <div class="user-page-info">
+                                                <p class="mb-0">{{forum.to_dict.userFullname}}</p>
+                                                <span class="font-small-2">{{forum.to_dict.date}}</span>
+                                            </div>
+                                            <div class="ml-auto user-like text-danger"><i class="fa fa-heart"></i></div>
+                                        </div>
+                                        <p>{{forum.to_dict.detail| safe | slice:":75"}}...</p>
+                                        <img class="img-fluid card-img-top rounded-sm mb-2" src="{% static 'app-assets/images/profile/post-media/2.jpg' %}" alt="avtar img holder">
+                                        <div class="d-flex justify-content-start align-items-center mb-1">
+                                            <div class="d-flex align-items-center">
+                                                <i class="feather icon-heart font-medium-2 mr-50"></i>
+                                                <span>{{forum.to_dict.upvotes|length}}</span>&nbsp;&nbsp;
+                                                <i class="fa fa-comment font-medium-2 mr-50"></i>
+                                                <span>{{comments|lookup:forloop.counter0}}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                <a href="{% url 'forumContent' forum_detay|lookup:forloop.counter0 %}"> <i class="fa fa-arrow-right font-medium-2 mr-50"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {% endfor %}
+                                {% endif %}
+                            </div>
+                            <div class="col-lg-3 col-12">
+                                <div class="card">
+                                    <div class="card-header d-flex justify-content-between">
+                                        <h4>Kimi Takip Etmeliyim?</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <form method="POST">
+                                                {% csrf_token %}
+                                            {% for item in moderators %}
+                                            {% if request.session.id2 in item.to_dict.userFollowers or request.session.id2 == item.id %}
+                                            {% else %}
+                                            <div class="d-flex justify-content-start align-items-center mb-1">
+                                                <div class="avatar mr-50">
+                                                    <img src="{{modavatars|lookup:forloop.counter0}}" alt="avtar img holder" height="35" width="35">
+                                                </div>
+                                                <div class="user-page-info">
+                                                    <h6 class="mb-0">{{item.to_dict.userFullname}}</h6>
+                                                    <span class="font-small-2">{{forloop.counter}} Mutual Friends</span>
+                                                </div>
+
+                                                <a href="{% url 'other_profiles' item.id %}"  class="btn btn-primary btn-icon ml-auto waves-effect waves-light">
+                                                    <i class="feather icon-arrow-right"></i></a>
+                                            </div>
+                                            </form>
+                                        {% endif %}
+                                        {% endfor %}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h6>Aldığım Dersler</h6>
+                                        {% if tutorials is None %}
+                                        <h4>Ders yok Yok</h4>
+                                        {% else %}
+                                        {% for ders in tutorials %}
+                                        <div class="polls-info mt-1">
+                                            <div class="d-flex justify-content-between">
+                                                <div class="vs-radio-con vs-radio-primary">
+                                                    <input type="radio" name="vueradio" value="false">
+                                                    <span class="vs-radio">
+                                                        <span class="vs-radio--border"></span>
+                                                        <span class="vs-radio--circle"></span>
+                                                    </span>
+                                                    <span class="">{{ders.id}}</span>
+                                                </div>
+                                                <div class="text-right">{{ders.to_dict.userTutorialLastLesson}}%</div>
+                                            </div>
+                                            <div class="progress progress-bar-primary my-50">
+                                                <div class="progress-bar" role="progressbar" aria-valuenow="58" aria-valuemin="58" aria-valuemax="100" style="width:{{ders.to_dict.userTutorialLastLesson}}%"></div>
+                                            </div>
+                                            <ul class="list-unstyled users-list d-flex">
+                                                <li data-toggle="tooltip" data-popup="tooltip-custom" data-placement="bottom" data-original-title="{{ders.id}}" class="avatar pull-up ml-0">
+                                                    <a href="{% url 'tutorial_detail' ders.id %}"><img class="media-object rounded-circle" src="{{tutorial_avats|lookup:forloop.counter0}}" alt="Avatar" height="42" width="42"></a>
+                                                </li>
+                                            </ul>
+
+                                        </div>
+                                         <hr />
+                                        {% endfor %}
+                                        {% endif %}
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </section>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+    <!-- END: Content-->
+
+    <div class="sidenav-overlay" style="touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></div>
+    <div class="drag-target" style="touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></div>
+
+    <!-- BEGIN: Footer-->
+    <footer class="footer footer-static footer-light">
+        <p class="clearfix blue-grey lighten-2 mb-0"><span class="float-md-left d-block d-md-inline-block mt-25">COPYRIGHT © 2020<a class="text-bold-800 grey darken-2" href="https://1.envato.market/pixinvent_portfolio" target="_blank">Pixinvent,</a>All rights Reserved</span><span class="float-md-right d-none d-md-block">Hand-crafted &amp; Made with<i class="feather icon-heart pink"></i></span>
+            <button class="btn btn-primary btn-icon scroll-top waves-effect waves-light" type="button"><i class="feather icon-arrow-up"></i></button>
+        </p>
+    </footer>
+    <!-- END: Footer-->
+
+
+    <!-- BEGIN: Vendor JS-->
+    <script src="{% static 'app-assets/vendors/js/vendors.min.js"></script>
+    <!-- BEGIN Vendor JS-->
+
+    <!-- BEGIN: Page Vendor JS-->
+    <!-- END: Page Vendor JS-->
+
+    <!-- BEGIN: Theme JS-->
+    <script src="{% static 'app-assets/js/core/app-menu.js"></script>
+    <script src="{% static 'app-assets/js/core/app.js"></script>
+    <script src="{% static 'app-assets/js/scripts/components.js"></script>
+    <!-- END: Theme JS-->
+
+    <!-- BEGIN: Page JS-->
+    <script src="{% static 'app-assets/js/scripts/pages/user-profile.js"></script>
+    <!-- END: Page JS-->
+
+
+<!-- END: Body-->
+
+</body>
+
+</html>
